@@ -45,11 +45,7 @@ print(input(code_library.beginning))
 
 print(input(code_library.next_page))
 
-print(input("Вы - " + char_name + " отважный герой, рэпер из трущёб, который желает "
-                            "\nруки и сердца прекрасной принцессы хип-хопа, но конечно не всё так просто... "
-                            "\nУЖАСНЫЙ ДРАКОН ПОЛОЖИЛ ЗУБ НА НЕЁ, этот парень точно затевает что-то неладное. "
-                            "\nВсё, больше нет времени, нужно выдвигаться в путь! "))
-
+print(input(code_library.beginning_scene_in_game))
 
 print(input(code_library.act_1))
 

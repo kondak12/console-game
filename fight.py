@@ -10,14 +10,11 @@ def forest_fight(reps):
     forest_action_choose = forest_action_choose.lower()
 
 
-    # гаргулья
-    forest_fighter_1 = [30, [8, 12]]
+    forest_fighter_1 = [30, [8, 12]] # статы гаргульи: 0 - хп; 1 - диапазон урона
 
-    # кабан
-    forest_fighter_2 = [20, [4, 10]]
+    forest_fighter_2 = [20, [4, 10]] # статы кабана
 
-    # грибочек
-    forest_fighter_3 = [5, [1, 8]]
+    forest_fighter_3 = [5, [1, 8]] # статы гриба
 
 
     forest_fighter = random.choice([forest_fighter_1, forest_fighter_2, forest_fighter_3])
@@ -65,23 +62,23 @@ def forest_fight(reps):
 
 
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_1:
-        print("Вы сражались с гаргулией и страхом одновременно. Вы оказались сильнее, враг повержен...\n \n*lvl + 0.6*\n")
+        print(code_library.rep_forest_fight_end_1)
         characters_stats.character_lvl += 0.6
 
 
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_2:
-        print("Вы убили кабана. Теперь можно и поживиться...\n \n*lvl + 0.4* \n*hp + 10*\n")
+        print(code_library.rep_forest_fight_end_2)
         characters_stats.character_lvl += 0.4
         characters_stats.character_health += 10
 
 
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_3:
-        print("Вы случайно убили гриб, наступив на него. А он мог бы стать добрым малым...\n \n*lvl + 0.2*\n")
+        print(code_library.rep_forest_fight_end_3)
         characters_stats.character_lvl += 0.2
 
 
     if forest_action_choose == "бег":
-        print("Вы бежали с такой скоростью, что ни один великан бы не догнал вас!\n \nВы убежали с поля боя!\n \n*lvl - 0.3*\n")
+        print(code_library.rep_run)
         characters_stats.character_lvl -= 0.3
 
 
@@ -90,6 +87,7 @@ def forest_fight(reps):
     forest_fighter_2[0] = 20
 
     forest_fighter_3[0] = 5
+
 
     if characters_stats.character_health > 0:
         print("Здоровье персонажа  -> ", characters_stats.character_health)
