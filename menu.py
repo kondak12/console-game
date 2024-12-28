@@ -45,7 +45,7 @@ print(input(code_library.beginning))
 
 print(input(code_library.next_page))
 
-print(input(code_library.beginning_scene_in_game))
+code_library.beginning_scene_in_game(char_name)
 
 print(input(code_library.act_1))
 
