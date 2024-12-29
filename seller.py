@@ -2,6 +2,7 @@ import characters_stats
 
 import code_library
 
+import time
 
 def use_seller():
     medvejevika = ["Медвежевика -> 'обычная ягода' -> лечит персонажа на 10 hp -> 3 золотых", 3]
@@ -18,6 +19,9 @@ def use_seller():
         for i in seller_items:
             print(i)
 
+        time.sleep(3)
+
+
         print("\nВведите 'уйти' чтобы уйти")
         seller_choose = input("Введите название товара для его покупки -> ")
         seller_choose = seller_choose.lower()
@@ -31,10 +35,26 @@ def use_seller():
     if seller_choose == "медвежевика":
         print("\nЗАХОТЕЛОСЬ МЕДВЕжевики?\n")
 
+        time.sleep(3)
+
+
         if characters_stats.character_coins >= medvejevika[1]:
             characters_stats.character_backpack.append("медвежевика")
             characters_stats.character_coins -= medvejevika[1]
-            print("СПЕРВА 3 ЗОЛОТЫХ! ТЕПерь забирай...")
+            print("СПЕРВА 3 ЗОЛОТЫХ!")
+
+            time.sleep(3)
+
+            print("теперь заБИРАЙ...\n")
+
+            time.sleep(2)
+
 
         elif characters_stats.character_coins < medvejevika[1]:
+            print("СПЕРВА 3 ЗОЛОТЫХ!")
+
+            time.sleep(3)
+
             print(code_library.no_coins)
+
+            time.sleep(2)

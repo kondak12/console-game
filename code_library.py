@@ -43,4 +43,4 @@ reps = [rep_forest_fight_1, rep_forest_fight_2, rep_forest_fight_3]
 
 
 
-no_coins = "ЗДЕСЬ КАЖЕТСЯ НЕ ХВАтает, приходи как накопишь, паРЕНЬ!"
+no_coins = "ЗДЕСЬ КАЖЕТСЯ НЕ ХВАтает, приходи как накопишь, паРЕНЬ!\n"

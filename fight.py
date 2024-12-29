@@ -4,6 +4,8 @@ import characters_stats
 
 import code_library
 
+import time
+
 
 def forest_fight(reps):
     forest_action_choose = ""
@@ -26,13 +28,21 @@ def forest_fight(reps):
         print(reps[0])
         print("Здоровье существа -> 30\n")
 
+        time.sleep(2)
+
+
     if forest_fighter == forest_fighter_2:
         print(reps[1])
         print("Здоровье существа -> 20\n")
 
+        time.sleep(2)
+
+
     if forest_fighter == forest_fighter_3:
         print(reps[2])
         print("Здоровье существа -> 5\n")
+
+        time.sleep(2)
 
 
 
@@ -50,14 +60,23 @@ def forest_fight(reps):
         if forest_action_choose == "удар":
             forest_character_damage = random.randint(characters_stats.character_damage[0], characters_stats.character_damage[1])
 
-            print("Вы нанесли", forest_character_damage,"урона врагу...  Здоровье врага ->", in_forest_fighter[0] - forest_character_damage)
             in_forest_fighter[0] -= forest_character_damage
+
+            if in_forest_fighter[0] < 0:
+                in_forest_fighter[0] = 0
+
+            print("Вы нанесли", forest_character_damage,"урона врагу...  Здоровье врага ->", in_forest_fighter[0])
+
+            time.sleep(2)
+
 
         enemy_damage = random.randint(forest_fighter[1][0], forest_fighter[1][1])
 
-        print("Враг ударил вас. Он нанёс", enemy_damage,"урона.")
+        print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
         characters_stats.character_health -= enemy_damage
         print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
+
+        time.sleep(2)
 
 
 
@@ -93,7 +112,11 @@ def forest_fight(reps):
         print("Здоровье персонажа  -> ", characters_stats.character_health)
         print("lvl  -> ", characters_stats.character_lvl,"\n")
 
+        time.sleep(3)
+
 
     if characters_stats.character_health < 1:
         print("Враг оказался сильнее... \nВы програли!\n")
         characters_stats.game_status = 0
+
+        time.sleep(5)
