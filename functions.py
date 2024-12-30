@@ -1,5 +1,7 @@
 import sys
 
+import characters_stats
+
 import rep_library
 
 import fight
@@ -47,15 +49,23 @@ def beginning_actions():
 
 
 
+def use_inventory():
+
+    print("Инвентарь:\n", characters_stats.character_backpack)
+
+    inventory_choose = input("Введите название предмета для использования -> ")
+
+
+
 def choose_action():
 
     print("Выберите локацию, куда отправитесь: ")
-    print("Дом", "Лес", "Торговец")
+    print("Дом", "/ Лес", "/ Торговец")
 
     choose = input()
     choose = choose.lower()
 
-    while choose != "лес" and choose != "дом" and choose != "торговец":
+    while choose != "лес" and choose != "дом" and choose != "торговец" and choose != "инвентарь":
         choose = input("\n" + "Вы пробормотали что-то под нос..." + "\n" +  "Выберите локацию, куда отправитесь: ")
         choose = choose.lower()
 
@@ -65,15 +75,18 @@ def choose_action():
 
 
     if choose == "лес":
-        print(rep_library.forest_page)
 
         fight.forest_fight(rep_library.reps)
 
 
     if choose == "торговец":
-        print(rep_library.seller_page)
 
         seller.use_seller()
+
+
+    if choose == "инвентарь":
+
+        use_inventory()
 
 
 

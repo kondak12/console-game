@@ -5,10 +5,12 @@ import rep_library
 import time
 
 def use_seller():
-    medvejevika = ["Медвежевика -> 'обычная ягода' -> лечит персонажа на 10 hp -> 3 золотых", 3]
-    sword_1 = ["Железный меч -> 'выкован руками торговца' -> увеличивает урон персонажа на 4 -> 8 золотых", 8]
+    print(rep_library.seller_page)
 
-    seller_items = [f"{medvejevika[0]}", f"{sword_1[0]}"]
+    medvejevika_sell = 3
+    sword_1_sell = 8
+
+    seller_items = [f"{rep_library.seller_medvejevika}", f"{rep_library.seller_sword_1}"]
     seller_keyword_list = ["медвежевика", "железный меч", "уйти"]
 
     seller_choose = ""
@@ -38,9 +40,9 @@ def use_seller():
         time.sleep(3)
 
 
-        if characters_stats.character_coins >= medvejevika[1]:
+        if characters_stats.character_coins >= medvejevika_sell:
             characters_stats.character_backpack.append("медвежевика")
-            characters_stats.character_coins -= medvejevika[1]
+            characters_stats.character_coins -= medvejevika_sell
             print("СПЕРВА 3 ЗОЛОТЫХ!")
 
             time.sleep(3)
@@ -50,11 +52,11 @@ def use_seller():
             time.sleep(2)
 
 
-        elif characters_stats.character_coins < medvejevika[1]:
+        elif characters_stats.character_coins < medvejevika_sell:
             print("СПЕРВА 3 ЗОЛОТЫХ!")
 
             time.sleep(3)
 
-            print(rep_library.no_coins)
+            print(rep_library.seller_no_coins)
 
             time.sleep(2)

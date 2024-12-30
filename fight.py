@@ -8,6 +8,8 @@ import time
 
 
 def forest_fight(reps):
+    print(rep_library.forest_page)
+
     forest_action_choose = ""
     forest_action_choose = forest_action_choose.lower()
 
