@@ -9,7 +9,7 @@ import code_library
 import seller
 
 
-def mmenu():
+def menu():
     print()
     print("СТАРТ /", "ВЫХОД", "\n")
 
@@ -37,17 +37,19 @@ def name_char():
 
 
 
-start_key = mmenu()
+start_key = menu()
 char_name = name_char()
 
 
-print(input(code_library.beginning))
+def beginning_actions():
 
-print(input(code_library.next_page))
+    print(input(code_library.beginning))
 
-code_library.beginning_scene_in_game(char_name)
+    print(input(code_library.next_page))
 
-print(input(code_library.act_1))
+    code_library.beginning_scene_in_game(char_name)
+
+    print(input(code_library.act_1))
 
 
 
@@ -80,6 +82,8 @@ def choose_action():
         seller.use_seller()
 
 
+
+beginning_actions()
 
 while characters_stats.game_status != 0:
 
