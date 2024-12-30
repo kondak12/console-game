@@ -1,6 +1,6 @@
 import characters_stats
 
-import code_library
+import rep_library
 
 import time
 
@@ -32,7 +32,7 @@ def use_seller():
             seller_choose = seller_choose.lower()
 
 
-    if seller_choose == "медвежевика":
+    if seller_choose == "медвежевика" or seller_choose == "мед":
         print("\nЗАХОТЕЛОСЬ МЕДВЕжевики?\n")
 
         time.sleep(3)
@@ -55,6 +55,6 @@ def use_seller():
 
             time.sleep(3)
 
-            print(code_library.no_coins)
+            print(rep_library.no_coins)
 
             time.sleep(2)

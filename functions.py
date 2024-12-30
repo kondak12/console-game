@@ -1,10 +1,8 @@
 import sys
 
-import characters_stats
+import rep_library
 
 import fight
-
-import code_library
 
 import seller
 
@@ -37,19 +35,15 @@ def name_char():
 
 
 
-start_key = menu()
-char_name = name_char()
-
-
 def beginning_actions():
 
-    print(input(code_library.beginning))
+    print(input(rep_library.beginning))
 
-    print(input(code_library.next_page))
+    print(input(rep_library.next_page))
 
-    code_library.beginning_scene_in_game(char_name)
+    rep_library.beginning_scene_in_game(char_name)
 
-    print(input(code_library.act_1))
+    print(input(rep_library.act_1))
 
 
 
@@ -67,24 +61,21 @@ def choose_action():
 
 
     if choose == "дом":
-        print(code_library.house_page)
+        print(rep_library.house_page)
 
 
     if choose == "лес":
-        print(code_library.forest_page)
+        print(rep_library.forest_page)
 
-        fight.forest_fight(code_library.reps)
+        fight.forest_fight(rep_library.reps)
 
 
     if choose == "торговец":
-        print(code_library.seller_page)
+        print(rep_library.seller_page)
 
         seller.use_seller()
 
 
 
-beginning_actions()
-
-while characters_stats.game_status != 0:
-
-    choose_action()
+start_key = menu()
+char_name = name_char()

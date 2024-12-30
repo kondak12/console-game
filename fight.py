@@ -2,7 +2,7 @@ import random
 
 import characters_stats
 
-import code_library
+import rep_library
 
 import time
 
@@ -48,12 +48,12 @@ def forest_fight(reps):
 
     while characters_stats.character_health > 0 and forest_action_choose != "бег" and in_forest_fighter[0] > 0:
 
-        forest_action_choose = input(code_library.fight_choose)
+        forest_action_choose = input(rep_library.fight_choose)
         forest_action_choose = forest_action_choose.lower()
 
 
         while forest_action_choose != "удар" and forest_action_choose != "бег":
-            forest_action_choose = input("Сейчас не время тормозить!\n" + code_library.fight_choose)
+            forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
             forest_action_choose = forest_action_choose.lower()
 
 
@@ -81,23 +81,23 @@ def forest_fight(reps):
 
 
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_1:
-        print(code_library.rep_forest_fight_end_1)
+        print(rep_library.rep_forest_fight_end_1)
         characters_stats.character_lvl += 0.6
 
 
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_2:
-        print(code_library.rep_forest_fight_end_2)
+        print(rep_library.rep_forest_fight_end_2)
         characters_stats.character_lvl += 0.4
         characters_stats.character_health += 10
 
 
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_3:
-        print(code_library.rep_forest_fight_end_3)
+        print(rep_library.rep_forest_fight_end_3)
         characters_stats.character_lvl += 0.2
 
 
     if forest_action_choose == "бег":
-        print(code_library.rep_run)
+        print(rep_library.rep_run)
         characters_stats.character_lvl -= 0.3
 
 
