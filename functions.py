@@ -53,11 +53,21 @@ def beginning_actions():
 
 
 
+def check_inventory():
+    if characters_stats.character_inventory == [ ]:
+        print("Инвентарь пуст.\n")
+
+    for i in characters_stats.character_inventory:
+        if i != "'" and i != "[" and i != "]":
+            print(i)
+
+
+
 def use_inventory():
+    check_inventory()
 
-    print("Инвентарь:\n", characters_stats.character_backpack)
-
-    inventory_choose = input("Введите название предмета для использования -> ")
+    if characters_stats.character_inventory != [ ]:
+        inventory_choose = input("Введите название предмета для использования -> ")
 
 
 
@@ -105,7 +115,7 @@ def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
     print(phrase_before_sell)
 
     if characters_stats.character_coins >= sell_item:
-        characters_stats.character_backpack.append(item_name)
+        characters_stats.character_inventory.append(item_name)
         characters_stats.character_coins -= sell_item
 
         time.sleep(3)

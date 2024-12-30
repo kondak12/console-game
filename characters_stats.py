@@ -3,5 +3,5 @@ game_status = 1             # обозначения статуса игры: 2 
 character_health = 100
 character_lvl = 1
 character_damage = [8, 12]
-character_backpack = []
 character_coins = 3
+character_inventory = []
