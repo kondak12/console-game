@@ -90,6 +90,7 @@ def forest_fight(reps):
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_1:
         print(rep_library.rep_forest_fight_end_1)
         characters_stats.character_lvl += 0.6
+
         if functions.chance(27):
             print(rep_library.rep_forest_fight_coins_1)
             characters_stats.character_coins += 3
@@ -100,6 +101,10 @@ def forest_fight(reps):
         print(rep_library.rep_forest_fight_end_2)
         characters_stats.character_lvl += 0.4
         characters_stats.character_health += 10
+
+        if characters_stats.character_health > characters_stats.character_default_health:
+            characters_stats.character_health = characters_stats.character_default_health
+
         if functions.chance(35):
             print(rep_library.rep_forest_fight_coins_2)
             characters_stats.character_coins += 2
@@ -108,6 +113,7 @@ def forest_fight(reps):
     if in_forest_fighter[0] < 1 and in_forest_fighter == forest_fighter_3:
         print(rep_library.rep_forest_fight_end_3)
         characters_stats.character_lvl += 0.2
+
         if functions.chance(40):
             print(rep_library.rep_forest_fight_coins_3)
             characters_stats.character_coins += 1
