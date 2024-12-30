@@ -106,7 +106,7 @@ def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
 
         time.sleep(3)
 
-        print("теперь заБИРАЙ...\n")
+        print("Теперь забирай.\n")
 
         time.sleep(2)
 

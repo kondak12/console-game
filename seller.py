@@ -8,7 +8,7 @@ def use_seller():
     print(rep_library.seller_page)
 
     seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}"]
-    seller_keyword_list = ["медвежевика", "железный меч", "уйти"]
+    seller_keyword_list = ["медвежевика", "железный меч", "уйти", "инвентарь"]
 
     seller_choose = ""
     seller_choose = seller_choose.lower()
@@ -27,8 +27,13 @@ def use_seller():
 
         while seller_choose not in seller_keyword_list:
             print("\nВведите 'уйти' чтобы уйти")
-            seller_choose = input("НЕ СОВСЕМ ТЕбя понял, парень. ЧТОО? -> ")
+            seller_choose = input("Не совсем тебя понял, парень. Что? -> ")
             seller_choose = seller_choose.lower()
+
+
+    if seller_choose == "инвентарь":
+
+        functions.use_inventory()
 
 
     if seller_choose == "медвежевика" or seller_choose == "мед":
