@@ -1,16 +1,13 @@
-import characters_stats
-
 import rep_library
+
+import functions
 
 import time
 
 def use_seller():
     print(rep_library.seller_page)
 
-    medvejevika_sell = 3
-    sword_1_sell = 8
-
-    seller_items = [f"{rep_library.seller_medvejevika}", f"{rep_library.seller_sword_1}"]
+    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}"]
     seller_keyword_list = ["медвежевика", "железный меч", "уйти"]
 
     seller_choose = ""
@@ -35,28 +32,6 @@ def use_seller():
 
 
     if seller_choose == "медвежевика" or seller_choose == "мед":
-        print("\nЗАХОТЕЛОСЬ МЕДВЕжевики?\n")
 
-        time.sleep(3)
-
-
-        if characters_stats.character_coins >= medvejevika_sell:
-            characters_stats.character_backpack.append("медвежевика")
-            characters_stats.character_coins -= medvejevika_sell
-            print("СПЕРВА 3 ЗОЛОТЫХ!")
-
-            time.sleep(3)
-
-            print("теперь заБИРАЙ...\n")
-
-            time.sleep(2)
-
-
-        elif characters_stats.character_coins < medvejevika_sell:
-            print("СПЕРВА 3 ЗОЛОТЫХ!")
-
-            time.sleep(3)
-
-            print(rep_library.seller_no_coins)
-
-            time.sleep(2)
+        functions.seller_choise(rep_library.seller_medvejevika[-1], rep_library.seller_medvejevika[1],
+                                rep_library.seller_medvejevika[2], rep_library.seller_medvejevika[3])

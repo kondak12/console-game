@@ -1,5 +1,7 @@
 import sys
 
+import time
+
 import characters_stats
 
 import rep_library
@@ -87,6 +89,35 @@ def choose_action():
     if choose == "инвентарь":
 
         use_inventory()
+
+
+
+def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
+
+    print(phrase_item)
+
+    time.sleep(3)
+
+    print(phrase_before_sell)
+
+    if characters_stats.character_coins >= sell_item:
+        characters_stats.character_backpack.append(item_name)
+        characters_stats.character_coins -= sell_item
+
+        time.sleep(3)
+
+        print("теперь заБИРАЙ...\n")
+
+        time.sleep(2)
+
+
+    elif characters_stats.character_coins < sell_item:
+
+        time.sleep(3)
+
+        print(rep_library.seller_no_coins)
+
+        time.sleep(2)
 
 
 
