@@ -2,6 +2,8 @@ import sys
 
 import time
 
+import random
+
 import characters_stats
 
 import rep_library
@@ -120,6 +122,15 @@ def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
         print(rep_library.seller_no_coins)
 
         time.sleep(2)
+
+
+
+def chance(chance_number):
+    r = random.randint(1, 100)
+    if r <= chance_number:
+        return True
+    else:
+        return False
 
 
 

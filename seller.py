@@ -1,3 +1,4 @@
+import characters_stats
 import rep_library
 
 import functions
@@ -7,7 +8,7 @@ import time
 def use_seller():
     print(rep_library.seller_page)
 
-    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}"]
+    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
     seller_keyword_list = ["медвежевика", "мед", "железный меч", "уйти", "инвентарь", "инв"]
 
     seller_choose = ""
