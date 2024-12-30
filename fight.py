@@ -2,6 +2,8 @@ import random
 
 import characters_stats
 
+import functions
+
 import rep_library
 
 import time
@@ -54,10 +56,12 @@ def forest_fight(reps):
         forest_action_choose = forest_action_choose.lower()
 
 
-        while forest_action_choose != "удар" and forest_action_choose != "бег":
+        while forest_action_choose != "удар" and forest_action_choose != "бег" and forest_action_choose != "инвентарь":
             forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
             forest_action_choose = forest_action_choose.lower()
 
+        if forest_action_choose == "инвентарь":
+            functions.use_inventory()
 
         if forest_action_choose == "удар":
             forest_character_damage = random.randint(characters_stats.character_damage[0], characters_stats.character_damage[1])
@@ -70,6 +74,7 @@ def forest_fight(reps):
             print("Вы нанесли", forest_character_damage,"урона врагу...  Здоровье врага ->", in_forest_fighter[0])
 
             time.sleep(2)
+
 
 
         enemy_damage = random.randint(forest_fighter[1][0], forest_fighter[1][1])
