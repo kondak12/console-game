@@ -67,7 +67,9 @@ def choose_action():
     choose = input()
     choose = choose.lower()
 
-    while choose != "лес" and choose != "дом" and choose != "торговец" and choose != "инвентарь":
+    choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв"]
+
+    while choose not in choose_list:
         choose = input("\n" + "Вы пробормотали что-то под нос..." + "\n" +  "Выберите локацию, куда отправитесь: ")
         choose = choose.lower()
 
@@ -81,12 +83,12 @@ def choose_action():
         fight.forest_fight(rep_library.reps)
 
 
-    if choose == "торговец":
+    if choose == "торговец" or choose == "торг":
 
         seller.use_seller()
 
 
-    if choose == "инвентарь":
+    if choose == "инвентарь" or choose == "инв":
 
         use_inventory()
 

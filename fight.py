@@ -60,7 +60,7 @@ def forest_fight(reps):
             forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
             forest_action_choose = forest_action_choose.lower()
 
-        if forest_action_choose == "инвентарь":
+        if forest_action_choose == "инвентарь" or forest_action_choose == "инв":
             functions.use_inventory()
 
         if forest_action_choose == "удар":

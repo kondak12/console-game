@@ -8,7 +8,7 @@ def use_seller():
     print(rep_library.seller_page)
 
     seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}"]
-    seller_keyword_list = ["медвежевика", "железный меч", "уйти", "инвентарь"]
+    seller_keyword_list = ["медвежевика", "мед", "железный меч", "уйти", "инвентарь", "инв"]
 
     seller_choose = ""
     seller_choose = seller_choose.lower()
@@ -31,7 +31,7 @@ def use_seller():
             seller_choose = seller_choose.lower()
 
 
-    if seller_choose == "инвентарь":
+    if seller_choose == "инвентарь" or seller_choose == "инв":
 
         functions.use_inventory()
 
