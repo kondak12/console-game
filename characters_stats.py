@@ -3,8 +3,12 @@ game_status = 1             # обозначения статуса игры: 2 
 character_default_health = 100
 character_health = 100
 character_cell_of_body = 1
+
 character_lvl = 1
+
 character_sword = "Деревянный меч"
 character_damage = [8, 12]
+
 character_coins = 3
+
 character_inventory = []

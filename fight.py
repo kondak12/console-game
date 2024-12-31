@@ -71,19 +71,18 @@ def forest_fight(reps):
             if in_forest_fighter[0] < 0:
                 in_forest_fighter[0] = 0
 
-            print("Вы нанесли", forest_character_damage,"урона врагу...  Здоровье врага ->", in_forest_fighter[0])
+            print("Вы нанесли", forest_character_damage, "урона врагу...  Здоровье врага ->", in_forest_fighter[0])
 
             time.sleep(2)
 
+        if in_forest_fighter[0] != 0:
+            enemy_damage = random.randint(forest_fighter[1][0], forest_fighter[1][1])
 
-        enemy_damage = random.randint(forest_fighter[1][0], forest_fighter[1][1])
+            print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
+            characters_stats.character_health -= enemy_damage
+            print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
 
-
-        print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
-        characters_stats.character_health -= enemy_damage
-        print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
-
-        time.sleep(2)
+            time.sleep(2)
 
 
 
