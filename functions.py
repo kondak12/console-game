@@ -95,7 +95,7 @@ def go_home():
 
 def check_inventory():
     if characters_stats.character_inventory == [ ]:
-        print("Инвентарь пуст.\n")
+        print("Инвентарь пуст.")
 
     else:
         print("Инвентарь:")
@@ -105,9 +105,6 @@ def check_inventory():
         for i in characters_stats.character_inventory:
             count += 1
 
-            if count != 0:
-                print()
-
             for j in i:
                 if j == characters_stats.character_inventory[count][0]:
                     j = j.upper()
@@ -115,13 +112,15 @@ def check_inventory():
                 if j != "'" and j != "[" and j != "]":
                     print(j, end="")
 
+    print("\nУ вас", characters_stats.character_coins, "монет.\n")
+
 
 
 def use_inventory():
     check_inventory()
 
     if characters_stats.character_inventory != [ ]:
-        inventory_choose = input("\n\nВведите название предмета для использования -> ")
+        inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
 
 
 
@@ -169,7 +168,10 @@ def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
     print(phrase_before_sell)
 
     if characters_stats.character_coins >= sell_item:
-        characters_stats.character_inventory.append(item_name)
+        item_name = item_name.lower()
+        if item_name != "железный меч":
+            characters_stats.character_inventory.append(item_name)
+
         characters_stats.character_coins -= sell_item
 
         time.sleep(3)

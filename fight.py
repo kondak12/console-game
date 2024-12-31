@@ -20,7 +20,7 @@ def forest_fight(reps):
 
     forest_fighter_2 = [20, [4, 10]] # статы кабана
 
-    forest_fighter_3 = [5, [1, 8]] # статы гриба
+    forest_fighter_3 = [10, [1, 8]] # статы гриба
 
 
     forest_fighter = random.choice([forest_fighter_1, forest_fighter_2, forest_fighter_3])
@@ -44,7 +44,7 @@ def forest_fight(reps):
 
     if forest_fighter == forest_fighter_3:
         print(reps[2])
-        print("Здоровье существа -> 5\n")
+        print("Здоровье существа -> 10\n")
 
         time.sleep(2)
 
@@ -55,8 +55,9 @@ def forest_fight(reps):
         forest_action_choose = input(rep_library.fight_choose)
         forest_action_choose = forest_action_choose.lower()
 
+        forest_action_choose_list = ["бег", "инвентарь", "инв", "удар"]
 
-        while forest_action_choose != "удар" and forest_action_choose != "бег" and forest_action_choose != "инвентарь" and forest_action_choose != "инв":
+        while forest_action_choose not in forest_action_choose_list:
             forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
             forest_action_choose = forest_action_choose.lower()
 

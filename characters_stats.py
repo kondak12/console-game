@@ -11,4 +11,5 @@ character_damage = [8, 12]
 
 character_coins = 100
 
-character_inventory = ['медвежевика', 'медвежевика']
+character_inventory = []
+character_key_inventory = []
