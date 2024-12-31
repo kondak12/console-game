@@ -10,8 +10,10 @@ import time
 def use_seller():
     print(rep_library.seller_page)
 
-    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
-    seller_keyword_list = ["медвежевика", "мед", "уйти", "инвентарь", "инв", "железный меч"]
+    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}",
+                    f"{rep_library.seller_cell_of_body_2[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
+
+    seller_keyword_list = ["медвежевика", "мед", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2"]
 
     seller_choose = ""
     seller_choose = seller_choose.lower()
@@ -34,15 +36,18 @@ def use_seller():
             seller_choose = seller_choose.lower()
 
 
+
     if seller_choose == "инвентарь" or seller_choose == "инв":
 
         functions.use_inventory()
+
 
 
     if seller_choose == "медвежевика" or seller_choose == "мед":
 
         functions.seller_choise(rep_library.seller_medvejevika[-1], rep_library.seller_medvejevika[1],
                                 rep_library.seller_medvejevika[2], rep_library.seller_medvejevika[3])
+
 
 
     if seller_choose == "железный меч":
@@ -62,7 +67,32 @@ def use_seller():
             characters_stats.character_sword = "Железный меч"
 
             rep_library.seller_sword_1[0] = "Железный меч -> ПРОДАНО"
-            seller_keyword_list.pop(-1)
 
         else:
             print("Такого меча я уже не сделаю, парень...\n")
+
+
+
+    if seller_choose == "ячейка крепкости 2":
+
+        if "ячейка крепкости 2" not in characters_stats.character_key_inventory:
+            functions.seller_choise(rep_library.seller_cell_of_body_2[-1], rep_library.seller_cell_of_body_2[1],
+                                    rep_library.seller_cell_of_body_2[2], rep_library.seller_cell_of_body_2[3])
+
+            characters_stats.character_key_inventory.append("ячейка крепкости 2")
+
+            print(rep_library.bought_cell_of_body_2, "  Макс. здоровье -> 130\n")
+
+            characters_stats.character_default_health = 130
+            characters_stats.character_health = 130
+
+            characters_stats.character_cell_of_body = "Ячейка крепкости тела 2"
+
+            rep_library.seller_cell_of_body_2[0] = "Ячейка крепкости 2 -> ПРОДАНО"
+
+        else:
+            print("Медальон был только один.\n")
+
+
+
+    time.sleep(2)

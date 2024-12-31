@@ -82,7 +82,8 @@ def go_home():
     if choose_home == "снаряжение":
         print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_damage[0],
               " /  Макс. урон ->", characters_stats.character_damage[1])
-        print("Ячейка крепкости тела ->", characters_stats.character_cell_of_body,
+
+        print("У вас", characters_stats.character_cell_of_body,
               "    Макс. здоровье ->", characters_stats.character_default_health, "\n")
 
 
