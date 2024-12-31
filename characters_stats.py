@@ -9,6 +9,6 @@ character_lvl = 1
 character_sword = "Деревянный меч"
 character_damage = [8, 12]
 
-character_coins = 3
+character_coins = 100
 
-character_inventory = []
+character_inventory = ['медвежевика', 'медвежевика']

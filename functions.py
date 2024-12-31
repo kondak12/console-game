@@ -97,9 +97,23 @@ def check_inventory():
     if characters_stats.character_inventory == [ ]:
         print("Инвентарь пуст.\n")
 
-    for i in characters_stats.character_inventory:
-        if i != "'" and i != "[" and i != "]":
-            print(i)
+    else:
+        print("Инвентарь:")
+
+        count = -1
+
+        for i in characters_stats.character_inventory:
+            count += 1
+
+            if count != 0:
+                print()
+
+            for j in i:
+                if j == characters_stats.character_inventory[count][0]:
+                    j = j.upper()
+
+                if j != "'" and j != "[" and j != "]":
+                    print(j, end="")
 
 
 
@@ -107,7 +121,7 @@ def use_inventory():
     check_inventory()
 
     if characters_stats.character_inventory != [ ]:
-        inventory_choose = input("Введите название предмета для использования -> ")
+        inventory_choose = input("\n\nВведите название предмета для использования -> ")
 
 
 
