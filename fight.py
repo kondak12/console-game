@@ -76,14 +76,14 @@ def forest_fight(reps):
             time.sleep(2)
 
 
-        if characters_stats.character_inventory != [ ] and forest_action_choose != "инвентарь" and forest_action_choose != "инв":
-            enemy_damage = random.randint(forest_fighter[1][0], forest_fighter[1][1])
+        enemy_damage = random.randint(forest_fighter[1][0], forest_fighter[1][1])
 
-            print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
-            characters_stats.character_health -= enemy_damage
-            print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
 
-            time.sleep(2)
+        print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
+        characters_stats.character_health -= enemy_damage
+        print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
+
+        time.sleep(2)
 
 
 

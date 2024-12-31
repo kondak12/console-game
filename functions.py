@@ -53,12 +53,47 @@ def beginning_actions():
 
 
 
-def check_inventory():
-    print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_damage[0],
-                                                        " /  Макс. урон ->", characters_stats.character_damage[1])
-    print("Ячейка крепкости тела ->", characters_stats.character_cell_of_body,
-          "    Макс. здоровье ->", characters_stats.character_default_health)
+def go_home():
+    print(rep_library.home_page)
 
+    choose_home = ""
+    print(rep_library.home_choose)
+
+    choose_home = input()
+
+    while choose_home != "уйти" and choose_home != "отдохнуть" and choose_home != "снаряжение":
+        print("Непонятные мысли лезут в голову, что это?")
+        choose_home = input("Надо подумать снова -> ")
+
+
+    if choose_home == "отдохнуть":
+        print("Пора бы отдохнуть... 'Вы заснули'.")
+
+        for i in "Z... Z... z...":
+            time.sleep(0.3)
+            print(i, end="")
+
+        time.sleep(1.5)
+
+        characters_stats.character_health = characters_stats.character_default_health
+        print("\n\nВы отдохнули. Здоровье восстановлено.")
+
+
+    if choose_home == "снаряжение":
+        print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_damage[0],
+              " /  Макс. урон ->", characters_stats.character_damage[1])
+        print("Ячейка крепкости тела ->", characters_stats.character_cell_of_body,
+              "    Макс. здоровье ->", characters_stats.character_default_health, "\n")
+
+
+    if choose_home == "уйти":
+        print("Ещё увидимся, дом. Жди меня!\n")
+
+    time.sleep(1.5)
+
+
+
+def check_inventory():
     if characters_stats.character_inventory == [ ]:
         print("Инвентарь пуст.\n")
 
@@ -92,7 +127,7 @@ def choose_action():
 
 
     if choose == "дом":
-        print(rep_library.house_page)
+        go_home()
 
 
     if choose == "лес":
