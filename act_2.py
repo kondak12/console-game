@@ -6,13 +6,14 @@ import functions
 
 import characters_stats
 
+import fight
+
 
 def act_2_actions():
     print(input(rep_library.act_2))
     print(input(rep_library.act_2_action_1))
     rep_library.act_2_action_2(functions.char_name)
 
-    act_2_choose = ""
     act_2_choose = input()
     act_2_choose = act_2_choose.lower()
 
@@ -80,3 +81,7 @@ def act_2_actions():
 
         if act_2_choose_1or2 == "2":
             rep_library.eye_answer_2()
+
+            print(rep_library.rep_forest_fight_begin_eye)
+
+            fight.fighting(1)

@@ -119,6 +119,8 @@ def check_inventory():
 
     print("\nУ вас", characters_stats.character_coins, "монет.\n")
 
+    time.sleep(1.5)
+
 
 
 def use_inventory():
@@ -156,7 +158,7 @@ def choose_action():
 
     if choose == "лес":
 
-        fight.fighting(rep_library.reps)
+        fight.fighting(0)
 
 
     if choose == "торговец" or choose == "торг":
