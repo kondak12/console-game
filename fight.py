@@ -69,6 +69,7 @@ def fighting(fight_mode_ex):
 
         if forest_action_choose == "инвентарь" or forest_action_choose == "инв":
             functions.use_inventory()
+            continue
 
         if forest_action_choose == "удар":
             forest_character_damage = random.randint(characters_stats.character_damage[0], characters_stats.character_damage[1])
