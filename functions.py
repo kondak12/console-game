@@ -108,6 +108,8 @@ def check_inventory():
         for i in characters_stats.character_inventory:
             count += 1
 
+            print()
+
             for j in i:
                 if j == characters_stats.character_inventory[count][0]:
                     j = j.upper()

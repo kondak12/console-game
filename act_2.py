@@ -41,8 +41,9 @@ def act_2_actions():
 
             act_2_choose_hp_dmg = input("Что выбрать? -> ")
 
-            while act_2_choose_hp_dmg != "1" and act_2_choose_hp_dmg != "2" and act_2_choose_hp_dmg != 3:
+            while act_2_choose_hp_dmg != "1" and act_2_choose_hp_dmg != "2" and act_2_choose_hp_dmg != "3":
                 act_2_choose_hp_dmg = input("Что же выбрать? -> ")
+
 
             if act_2_choose_hp_dmg == "1":
                 characters_stats.character_default_health -= 30
@@ -53,3 +54,24 @@ def act_2_actions():
 
                 rep_library.eye_question_choose_dmg(characters_stats.character_default_health, characters_stats.character_damage[0],
                                                     characters_stats.character_damage[1])
+
+
+            if act_2_choose_hp_dmg == "2":
+                characters_stats.character_default_health += 30
+                characters_stats.character_health = characters_stats.character_default_health
+
+                characters_stats.character_damage[0] -= 6
+                characters_stats.character_damage[1] -= 6
+
+                rep_library.eye_question_choose_hp(characters_stats.character_default_health,characters_stats.character_damage[0],
+                                                    characters_stats.character_damage[1])
+
+
+            if act_2_choose_hp_dmg == "3":
+                rep_library.eye_question_choose_quit()
+
+                characters_stats.character_inventory.append("медвежевика")
+                characters_stats.character_inventory.append("медвежевика")
+                characters_stats.character_inventory.append("медвежевика")
+
+                functions.use_inventory()

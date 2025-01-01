@@ -53,6 +53,21 @@ def eye_question_choose_dmg(max_hp, min_dmg, max_dmg):
     print(input("Чувствую небольшую слабость в теле, но прилив сил к рукам!"))
     print(input("Макс. здоровье - " + f"{max_hp}" + "   Урон - от " + f"{min_dmg}" + "  до " + f"{max_dmg}"))
 
+def eye_question_choose_hp(max_hp, min_dmg, max_dmg):
+    print(input("\n'Сделка заключена, ПО ГЛАЗАМ!'"))
+    print(input("Засияв, глаз мнгновенно исчез, оставив меня одного."))
+    print(input("Чувствую небольшую слабость в руках, но прилив сил к телу!"))
+    print(input("Макс. здоровье - " + f"{max_hp}" + "   Урон - от " + f"{min_dmg}" + "  до " + f"{max_dmg}"))
+
+def eye_question_choose_quit():
+    print(input("\n'Эй! Как ты смеешь вот так уходить?'"))
+    print(input("Посмотрев назад вы видете, что глаз исчез"))
+    print(input("Рюкзак потяжелел..."))
+    print(input("'Что за чёрт?'"))
+    print(input("Открыв рюкзак вы видите из ниоткуда появившиеся ягоды медвежевики."))
+    print(input("'Видимо глаз был хорошим парнем...'"))
+    print(input("Спасибо тебе."))
+
 
 
 home_page = "\nВы вошли в свой дом. 'Здравствуй, дом!'."
