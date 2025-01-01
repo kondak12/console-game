@@ -10,8 +10,8 @@ import time
 def use_seller():
     print(rep_library.seller_page)
 
-    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}",
-                    f"{rep_library.seller_cell_of_body_2[0]}", f"{rep_library.seller_pechenierka[0]}" "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
+    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_pechenierka[0]}", f"{rep_library.seller_sword_1[0]}",
+                    f"{rep_library.seller_cell_of_body_2[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
 
     seller_keyword_list = ["медвежевика", "мед", "печеньерка", "печ", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2"]
 

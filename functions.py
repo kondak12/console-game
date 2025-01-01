@@ -4,8 +4,6 @@ import time
 
 import random
 
-import act_2
-
 import characters_stats
 
 import rep_library

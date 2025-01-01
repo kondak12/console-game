@@ -24,8 +24,6 @@ def fighting(fight_mode_ex):
 
     forest_fighter_3 = None
 
-    fighter_eye = None
-
 
     if fight_mode_ex == 0:
         forest_fighter_1 = [30, [8, 12]]   # статы гаргульи: 0 - хп; 1 - диапазон урона
@@ -47,10 +45,7 @@ def fighting(fight_mode_ex):
 
 
     elif fight_mode_ex == 1:
-        fighter_eye = [100, [15, 20]]   # статы Глаза
-
-        forest_fighter = fighter_eye
-        in_forest_fighter = fighter_eye
+        in_forest_fighter = [100, [15, 20]]   # статы Глаза
 
     time.sleep(2)
 
