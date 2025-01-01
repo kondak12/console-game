@@ -128,6 +128,12 @@ def use_inventory():
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
 
 
+def choose_fighter_rep(f_f, f_f_num, f_rep, f_param):
+    if f_f == f_f_num:
+        print(f_rep)
+        print(f_param)
+
+
 
 def choose_action():
 
@@ -150,7 +156,7 @@ def choose_action():
 
     if choose == "лес":
 
-        fight.forest_fight(rep_library.reps)
+        fight.fighting(rep_library.reps)
 
 
     if choose == "торговец" or choose == "торг":
