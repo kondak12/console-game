@@ -12,5 +12,5 @@ character_damage = [8 + character_lvl, 12 + character_lvl]
 
 character_coins = 100
 
-character_inventory = []
+character_inventory = ['медвежевика']
 character_key_inventory = []

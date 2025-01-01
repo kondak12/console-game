@@ -5,6 +5,7 @@ import time
 import random
 
 import act_2
+
 import characters_stats
 
 import rep_library
@@ -52,14 +53,10 @@ def beginning_actions():
 
     print(input(rep_library.act_1))
 
-    time.sleep(3)
-
 
 
 def go_home():
     print(rep_library.home_page)
-
-    choose_home = ""
     print(rep_library.home_choose)
 
     choose_home = input()
@@ -88,6 +85,7 @@ def go_home():
 
         print("У вас", characters_stats.character_cell_of_body,
               "    Макс. здоровье ->", characters_stats.character_default_health, "\n")
+
 
 
     if choose_home == "уйти":
@@ -124,11 +122,33 @@ def check_inventory():
 
 
 
+def use_medvejevika():
+    characters_stats.character_inventory.remove("медвежевика")
+    characters_stats.character_health += 15
+
+    print(input("Вы съели ягоду. +15 Здоровья"))
+
+    if characters_stats.character_health > characters_stats.character_default_health:
+        characters_stats.character_health = characters_stats.character_default_health
+
+    print(input("Здоровье персонажа -> " + f"{characters_stats.character_health}"))
+
+
+
 def use_inventory():
     check_inventory()
 
     if characters_stats.character_inventory != [ ]:
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
+        inventory_choose = inventory_choose.lower()
+
+        while inventory_choose != "медвежевика" and inventory_choose != "мед" and inventory_choose != "закрыть":
+            inventory_choose = input("Что же сделать -> ")
+            inventory_choose = inventory_choose.lower()
+
+        if inventory_choose == "медвежевика" or inventory_choose == "мед":
+            use_medvejevika()
+
 
 
 def choose_fighter_rep(f_f, f_f_num, f_rep, f_param):
@@ -201,31 +221,31 @@ def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
 
     print(phrase_item)
 
-    time.sleep(3)
+    time.sleep(1.5)
 
     print(phrase_before_sell)
 
     if characters_stats.character_coins >= sell_item:
         item_name = item_name.lower()
-        if item_name != "железный меч":
+        if item_name != "железный меч" and item_name != "железный меч":
             characters_stats.character_inventory.append(item_name)
 
         characters_stats.character_coins -= sell_item
 
-        time.sleep(3)
+        time.sleep(1.5)
 
         print("Теперь забирай.\n")
 
-        time.sleep(2)
+        time.sleep(1.5)
 
 
     elif characters_stats.character_coins < sell_item:
 
-        time.sleep(3)
+        time.sleep(1.5)
 
         print(rep_library.seller_no_coins)
 
-        time.sleep(2)
+        time.sleep(1.5)
 
 
 
