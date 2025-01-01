@@ -51,6 +51,8 @@ def beginning_actions():
 
     print(input(rep_library.act_1))
 
+    time.sleep(3)
+
 
 
 def go_home():
