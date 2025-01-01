@@ -28,12 +28,28 @@ def act_2_actions():
         time.sleep(1.5)
 
         act_2_choose_1or2 = input("Что ответить? -> ")
-        act_2_choose_1or2 = act_2_choose_1or2.lower()
 
-        while act_2_choose != "1" and act_2_choose_1or2 != "2":
+        while act_2_choose_1or2 != "1" and act_2_choose_1or2 != "2":
             act_2_choose_1or2 = input("Что же ответить? -> ")
-            act_2_choose_1or2 = act_2_choose_1or2.lower()
 
 
         if act_2_choose_1or2 == "1":
-            pass
+            rep_library.eye_answer_1()
+            print(rep_library.eye_question_1)
+
+            time.sleep(1.5)
+
+            act_2_choose_hp_dmg = input("Что выбрать? -> ")
+
+            while act_2_choose_hp_dmg != "1" and act_2_choose_hp_dmg != "2" and act_2_choose_hp_dmg != 3:
+                act_2_choose_hp_dmg = input("Что же выбрать? -> ")
+
+            if act_2_choose_hp_dmg == "1":
+                characters_stats.character_default_health -= 30
+                characters_stats.character_health = characters_stats.character_default_health
+
+                characters_stats.character_damage[0] += 6
+                characters_stats.character_damage[1] += 6
+
+                rep_library.eye_question_choose_dmg(characters_stats.character_default_health, characters_stats.character_damage[0],
+                                                    characters_stats.character_damage[1])
