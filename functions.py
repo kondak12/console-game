@@ -4,6 +4,7 @@ import time
 
 import random
 
+import act_2
 import characters_stats
 
 import rep_library
@@ -140,12 +141,19 @@ def choose_fighter_rep(f_f, f_f_num, f_rep, f_param):
 def choose_action():
 
     print("Выберите локацию, куда отправитесь: ")
-    print("Дом", "/ Лес", "/ Торговец")
+
+    if characters_stats.character_default_lvl < 3:
+        print("Дом / Лес / Торговец")
+    else:
+        print("Дом / Лес / Торговец / Тропа")
 
     choose = input()
     choose = choose.lower()
 
     choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв"]
+
+    if characters_stats.character_default_lvl >= 3:
+        choose_list.append("тропа")
 
     while choose not in choose_list:
         choose = input("\n" + "Вы пробормотали что-то под нос..." + "\n" +  "Выберите локацию, куда отправитесь: ")
@@ -164,6 +172,23 @@ def choose_action():
     if choose == "торговец" or choose == "торг":
 
         seller.use_seller()
+
+
+    if choose == "тропа" and characters_stats.character_default_lvl >= 3:
+        rep_library.act_2_recomendations()
+
+        choose_begin_act_2 = input("Хмм.. -> ")
+        choose_begin_act_2 = choose_begin_act_2.lower()
+
+        while choose_begin_act_2 != "идти" and choose_begin_act_2 != "остаться":
+            choose_begin_act_2 = input("Хмммм.. -> ")
+            choose_begin_act_2 = choose_begin_act_2.lower()
+
+        if choose_begin_act_2 == "идти":
+            act_2.act_2_actions()
+
+        elif choose_begin_act_2 == "остаться":
+            print("Ещё чутка потренеруюсь...\n")
 
 
     if choose == "инвентарь" or choose == "инв":

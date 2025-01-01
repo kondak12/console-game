@@ -10,8 +10,10 @@ import fight
 
 
 def act_2_actions():
-    print(input(rep_library.act_2))
+    rep_library.act_2_beginning()
+
     print(input(rep_library.act_2_action_1))
+
     rep_library.act_2_action_2(functions.char_name)
 
     act_2_choose = input()
