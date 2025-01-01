@@ -11,9 +11,9 @@ def use_seller():
     print(rep_library.seller_page)
 
     seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_sword_1[0]}",
-                    f"{rep_library.seller_cell_of_body_2[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
+                    f"{rep_library.seller_cell_of_body_2[0]}", f"{rep_library.seller_pechenierka[0]}" "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
 
-    seller_keyword_list = ["медвежевика", "мед", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2"]
+    seller_keyword_list = ["медвежевика", "мед", "печеньерка", "печ", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2"]
 
     seller_choose = ""
     seller_choose = seller_choose.lower()
@@ -49,6 +49,10 @@ def use_seller():
         functions.seller_choise(rep_library.seller_medvejevika[-1], rep_library.seller_medvejevika[1],
                                 rep_library.seller_medvejevika[2], rep_library.seller_medvejevika[3])
 
+
+    if seller_choose == "печеньерка" or seller_choose == "печ":
+        functions.seller_choise(rep_library.seller_pechenierka[-1], rep_library.seller_pechenierka[1],
+                                rep_library.seller_pechenierka[2], rep_library.seller_pechenierka[3])
 
 
     if seller_choose == "железный меч":

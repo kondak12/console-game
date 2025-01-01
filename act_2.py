@@ -108,9 +108,8 @@ def act_2_actions():
             rep_library.act_2_choose_run_2(characters_stats.character_default_health, characters_stats.character_damage[0],
                                            characters_stats.character_damage[1])
 
-            characters_stats.character_inventory.append("медвежевика")
-            characters_stats.character_inventory.append("медвежевика")
-            characters_stats.character_inventory.append("медвежевика")
+            characters_stats.character_inventory.append("печеньерка")
+            characters_stats.character_inventory.append("печеньерка")
 
 
         if act_2_choose_1or2 == "2":

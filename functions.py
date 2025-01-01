@@ -135,6 +135,19 @@ def use_medvejevika():
 
 
 
+def use_pechenierka():
+    characters_stats.character_inventory.remove("печеньерка")
+    characters_stats.character_health += 30
+
+    print(input("Вы съели печеньерку. +30 Здоровья"))
+
+    if characters_stats.character_health > characters_stats.character_default_health:
+        characters_stats.character_health = characters_stats.character_default_health
+
+    print(input("Здоровье персонажа -> " + f"{characters_stats.character_health}"))
+
+
+
 def use_inventory():
     check_inventory()
 
@@ -142,13 +155,17 @@ def use_inventory():
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
         inventory_choose = inventory_choose.lower()
 
-        while inventory_choose != "медвежевика" and inventory_choose != "мед" and inventory_choose != "закрыть":
+        while (inventory_choose != "медвежевика" and inventory_choose != "мед" and inventory_choose != "печеньерка"
+                                                 and inventory_choose != "печ" and inventory_choose != "закрыть"):
+
             inventory_choose = input("Что же сделать -> ")
             inventory_choose = inventory_choose.lower()
 
         if inventory_choose == "медвежевика" or inventory_choose == "мед":
             use_medvejevika()
 
+        if inventory_choose == "печеньерка" or inventory_choose ==  "печ":
+            use_pechenierka()
 
 
 def choose_fighter_rep(f_f, f_f_num, f_rep, f_param):
