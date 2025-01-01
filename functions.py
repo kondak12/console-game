@@ -205,7 +205,7 @@ def choose_action():
             choose_begin_act_2 = choose_begin_act_2.lower()
 
         if choose_begin_act_2 == "идти":
-            act_2.act_2_actions()
+            return 1
 
         elif choose_begin_act_2 == "остаться":
             print("Ещё чутка потренеруюсь...\n")
@@ -227,7 +227,7 @@ def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
 
     if characters_stats.character_coins >= sell_item:
         item_name = item_name.lower()
-        if item_name != "железный меч" and item_name != "железный меч":
+        if item_name != "железный меч" and item_name != "ячейка крепкости 2":
             characters_stats.character_inventory.append(item_name)
 
         characters_stats.character_coins -= sell_item
