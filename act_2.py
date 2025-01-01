@@ -75,3 +75,8 @@ def act_2_actions():
                 characters_stats.character_inventory.append("медвежевика")
 
                 functions.use_inventory()
+
+
+
+        if act_2_choose_1or2 == "2":
+            rep_library.eye_answer_2()

@@ -9,7 +9,7 @@ import rep_library
 import time
 
 
-def forest_fight(reps):
+def forest_fight(fight_mode_ex):
     print(rep_library.forest_page)
 
     forest_action_choose = ""
@@ -29,21 +29,21 @@ def forest_fight(reps):
 
 
     if forest_fighter == forest_fighter_1:
-        print(reps[0])
+        print(rep_library.reps[0])
         print("Здоровье существа -> 30\n")
 
         time.sleep(2)
 
 
     if forest_fighter == forest_fighter_2:
-        print(reps[1])
+        print(rep_library.reps[1])
         print("Здоровье существа -> 20\n")
 
         time.sleep(2)
 
 
     if forest_fighter == forest_fighter_3:
-        print(reps[2])
+        print(rep_library.reps[2])
         print("Здоровье существа -> 10\n")
 
         time.sleep(2)
