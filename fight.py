@@ -144,9 +144,8 @@ def fighting(fight_mode_ex):
             characters_stats.character_default_health = 150
             characters_stats.character_health = 150
             characters_stats.character_cell_of_body = "Ячейка крепкости тела 3"
-            print(rep_library.rep_forest_fight_end_eye, characters_stats.character_default_health)
+            rep_library.rep_forest_fight_end_eye()
             characters_stats.character_default_lvl += 3
-
 
 
 

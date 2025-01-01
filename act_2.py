@@ -25,7 +25,7 @@ def act_2_actions():
 
 
 
-    if act_2_choose == "стоять": # стоять
+    if act_2_choose == "стоять":   # стоять
         rep_library.act_2_choose_stay()
 
         time.sleep(1.5)
@@ -77,13 +77,44 @@ def act_2_actions():
                 characters_stats.character_inventory.append("медвежевика")
                 characters_stats.character_inventory.append("медвежевика")
 
-                functions.use_inventory()
-
 
 
         if act_2_choose_1or2 == "2":
             rep_library.eye_answer_2()
 
+            print(rep_library.rep_forest_fight_begin_eye)
+
+            fight.fighting(1)
+
+
+
+    if act_2_choose == "бежать":
+        rep_library.act_2_choose_run()
+
+        time.sleep(1.5)
+
+        act_2_choose_1or2 = input("Что ответить? -> ")
+
+        while act_2_choose_1or2 != "1" and act_2_choose_1or2 != "2":
+            act_2_choose_1or2 = input("Что же ответить? -> ")
+
+
+        if act_2_choose_1or2 == "1":
+            characters_stats.character_damage[0] += 4
+            characters_stats.character_damage[1] += 4
+            characters_stats.character_default_health += 20
+            characters_stats.character_health = characters_stats.character_health
+
+            rep_library.act_2_choose_run_2(characters_stats.character_default_health, characters_stats.character_damage[0],
+                                           characters_stats.character_damage[1])
+
+            characters_stats.character_inventory.append("медвежевика")
+            characters_stats.character_inventory.append("медвежевика")
+            characters_stats.character_inventory.append("медвежевика")
+
+
+        if act_2_choose_1or2 == "2":
+            rep_library.eye_answer_2()
             print(rep_library.rep_forest_fight_begin_eye)
 
             fight.fighting(1)
