@@ -127,7 +127,7 @@ def go_home():
 
 def check_inventory():
     if characters_stats.character_inventory == [ ]:
-        print("Инвентарь пуст.")
+        print("\nИнвентарь пуст.")
 
     else:
         print("Инвентарь:")

@@ -15,3 +15,8 @@ while characters_stats.game_status != 0 and characters_stats.act_2_trigger != 1:
 
 if characters_stats.act_2_trigger == 1:
     act_2.act_2_actions()
+
+
+
+if __name__ == "main":
+    functions.beginning_actions()
