@@ -56,17 +56,21 @@ def fighting(fight_mode_ex):
         forest_action_choose = input(rep_library.fight_choose)
         forest_action_choose = forest_action_choose.lower()
 
-        forest_action_choose_list = ["бег", "инвентарь", "инв", "удар"]
+        forest_action_choose_list = ["бег", "инвентарь", "инв", "удар", "уд", "справка"]
 
         while forest_action_choose not in forest_action_choose_list:
             forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
             forest_action_choose = forest_action_choose.lower()
 
+        if forest_action_choose == "справка":  # справка
+            functions.reference()
+            continue
+
         if forest_action_choose == "инвентарь" or forest_action_choose == "инв":
             functions.use_inventory()
             continue
 
-        if forest_action_choose == "удар":
+        if forest_action_choose == "удар" or forest_action_choose == "уд":
             forest_character_damage = random.randint(characters_stats.character_damage[0], characters_stats.character_damage[1])
 
             in_forest_fighter[0] -= forest_character_damage

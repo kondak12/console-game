@@ -13,7 +13,7 @@ def use_seller():
     seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_pechenierka[0]}", f"{rep_library.seller_sword_1[0]}",
                     f"{rep_library.seller_cell_of_body_2[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
 
-    seller_keyword_list = ["медвежевика", "мед", "печеньерка", "печ", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2"]
+    seller_keyword_list = ["медвежевика", "мед", "печеньерка", "печ", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2", "справка"]
 
     seller_choose = ""
     seller_choose = seller_choose.lower()
@@ -35,6 +35,12 @@ def use_seller():
             print("\nВведите 'уйти' чтобы уйти")
             seller_choose = input("Не совсем тебя понял, парень. Что? -> ")
             seller_choose = seller_choose.lower()
+
+
+
+    if seller_choose == "справка":
+        # справка
+        functions.reference()
 
 
 

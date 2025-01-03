@@ -13,6 +13,34 @@ import fight
 import seller
 
 
+def reference():
+
+    print(rep_library.call_reference)
+
+    ref_enter = input("Введите название пункта >> ")
+    ref_enter = ref_enter.lower()
+
+    while ref_enter not in rep_library.reference_list:
+        ref_enter = input("Неизвестный пункт. Повторите попытку >> ")
+        ref_enter = ref_enter.lower()
+
+    if ref_enter == "сюжет":
+        print(input(rep_library.call_reference_suj))
+
+    if ref_enter == "уровень":
+        print(input(rep_library.call_reference_lvl))
+
+    if ref_enter == "инвентарь" or ref_enter == "инв":
+        print(input(rep_library.call_reference_inventory))
+
+    if ref_enter == "управление" or ref_enter == "упр":
+        print(input(rep_library.call_reference_refs))
+
+    if ref_enter == "диалоги":
+        print(input(rep_library.call_reference_dialogues))
+
+
+
 def menu():
     print()
     print("СТАРТ /", "ВЫХОД", "\n")
@@ -34,7 +62,7 @@ def menu():
 def name_char():
     name = input("Введите имя персонажа >> ")
 
-    if name.isdigit() or name == " ":
+    while name.isdigit() or name == "":
         name = input("Это точно имя? Попробуй ещё раз, дружок >> ")
 
     return name
@@ -46,6 +74,8 @@ def beginning_actions():
     print(input(rep_library.beginning))
 
     print(input(rep_library.next_page))
+
+    print(input(rep_library.reference_in_beginning))
 
     rep_library.beginning_scene_in_game(char_name)
 
@@ -63,6 +93,8 @@ def go_home():
         print("Непонятные мысли лезут в голову, что это?")
         choose_home = input("Надо подумать снова -> ")
 
+    if choose_home == "справка":   # справка
+        reference()
 
     if choose_home == "отдохнуть":
         print("Пора бы отдохнуть... 'Вы заснули'.")
@@ -147,17 +179,22 @@ def use_pechenierka():
 
 
 def use_inventory():
+
     check_inventory()
 
     if characters_stats.character_inventory != [ ]:
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
         inventory_choose = inventory_choose.lower()
 
-        while (inventory_choose != "медвежевика" and inventory_choose != "мед" and inventory_choose != "печеньерка"
-                                                 and inventory_choose != "печ" and inventory_choose != "закрыть"):
+        character_inventory_list = ["медвежевика", "мед", "печеньерка", "печ", "закрыть", "справка"]
+
+        while inventory_choose not in character_inventory_list:
 
             inventory_choose = input("Что же сделать -> ")
             inventory_choose = inventory_choose.lower()
+
+        if inventory_choose == "справка":  # справка
+            reference()
 
         if inventory_choose == "медвежевика" or inventory_choose == "мед":
             use_medvejevika()
@@ -185,7 +222,7 @@ def choose_action():
     choose = input()
     choose = choose.lower()
 
-    choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв"]
+    choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв", "справка"]
 
     if characters_stats.character_default_lvl >= 3:
         choose_list.append("тропа")
@@ -229,6 +266,11 @@ def choose_action():
     if choose == "инвентарь" or choose == "инв":
 
         use_inventory()
+
+
+    if choose == "справка":   # справка
+
+        reference()
 
 
 
