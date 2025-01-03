@@ -220,7 +220,7 @@ def choose_action():
             choose_begin_act_2 = choose_begin_act_2.lower()
 
         if choose_begin_act_2 == "идти":
-            return 1
+            characters_stats.act_2_trigger = 1
 
         elif choose_begin_act_2 == "остаться":
             print("Ещё чутка потренеруюсь...\n")
