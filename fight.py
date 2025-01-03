@@ -15,8 +15,6 @@ def fighting(fight_mode_ex):
         print(rep_library.forest_page)
 
 
-    forest_action_choose = None
-
     in_forest_fighter = None
 
     forest_fighter_1 = None
@@ -49,7 +47,7 @@ def fighting(fight_mode_ex):
 
 
     elif fight_mode_ex == 1:
-        in_forest_fighter = [100, [15, 20]]   # статы Глаза
+        in_forest_fighter = [75, [15, 20]]   # статы Глаза
 
 
     elif fight_mode_ex == 2:
@@ -102,6 +100,16 @@ def fighting(fight_mode_ex):
                         "Нужно бежать ещё", 3 - count_run, "раз!\n")
 
                     time.sleep(1.5)
+
+
+
+        if fight_mode_ex == 2 and forest_action_choose == "бег" and count_run != 3:
+            count_run += 1.5
+            if count_run != 3:
+                print("Нужно пробовать убежать от него.\n"
+                      "Нужно бежать ещё 1 раз!\n")
+
+                time.sleep(1.5)
 
 
 
@@ -176,9 +184,28 @@ def fighting(fight_mode_ex):
             rep_library.eye_fight_run()
 
 
+    elif fight_mode_ex == 2:
+
+        if in_forest_fighter[0] < 1:
+            rep_library.act_3_action_1_choose_1_end()
+            characters_stats.character_health += 25
+            characters_stats.character_default_lvl += 2
+
+
+        if count_run == 3:
+            rep_library.act_3_action_1_choose_1_run()
+
+
     if count_run == 3 and fight_mode_ex == 1:
         characters_stats.character_default_lvl -= 0.6
         print("lvl: - 0,6\n")
+
+        time.sleep(1.5)
+
+
+    if count_run == 3 and fight_mode_ex == 2:
+        characters_stats.character_default_lvl -= 0.4
+        print("lvl: - 0,4\n")
 
         time.sleep(1.5)
 

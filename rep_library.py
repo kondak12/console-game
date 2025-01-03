@@ -221,7 +221,7 @@ call_reference_dialogues = "Диалоги: Перемещение к след. 
 act_3_beginning = "\nАкт 3: Навстречу страху."
 
 def act_3_action_1():
-    print(input("Шага за шагом."))
+    print(input("Шаг за шагом."))
     print(input("Крик за криком."))
     print(input("Вы уже стоите у входа в башню."))
     print(input("На входе вас встретил перепуганный но с виду мощный охранник."))
@@ -232,7 +232,7 @@ def act_3_action_1():
           "2. Если не освободишь дорогу - УБЬЮ...")
     inp = input("Что выбрать? >> ")
 
-    while inp != "1" or inp != "2":
+    while inp != "1" and inp != "2":
         inp = input("Что же выбрать? >> ")
 
     return inp
@@ -244,6 +244,32 @@ def act_3_action_1_choose_1():
     print(input("'Д-ДАВАЙ, НАПАДАЙ! Я ОТРУБЛЮ ТВОЮ З-ЗМЕИНУЮ ГОЛОВУ!'"))
     print(input("Ну что ж, ничего не поделаешь :)"))
     print(input("'ДАВАЙ!'\n"))
+
+def act_3_action_1_choose_1_end():
+    print(input("Вы победили стражника."))
+    print(input("'ты...'"))
+    print(input("'обычный парень..'"))
+    print(input("'никакой не змей...'"))
+    print(input("'защити..'"))
+    print(input("'нашу...'"))
+    print(input("'принцессу...'"))
+    print(input("'...'"))
+    print(input("Его смерть на моих руках.."))
+    print(input("Он сам виноват."))
+    print(input("..."))
+    print(input("Покойся с миром."))
+
+def act_3_action_1_choose_1_run():
+    print(input("'УБЕГАЕШЬ, ДА?'"))
+    print(input("'СТОЙ'"))
+    print(input("'Я СНЕСУ ТЕБЕ ГОЛ...'"))
+    print(input("..."))
+    print(input("..."))
+    print(input("Обернувшись, вы видете картину:"))
+    print(input("Стражника сожгло шальным снарядом дракона!"))
+    print(input("Да уж, не завидую я тебе..."))
+    print(input("..."))
+    print(input("Покойся с миром."))
 
 def act_3_choose_run_2(max_hp, min_dmg, max_dmg):
     print(input("'Боишься, человек?'"))
