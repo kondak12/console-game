@@ -10,6 +10,7 @@ import time
 
 
 def fighting(fight_mode_ex):
+
     if fight_mode_ex == 0:
         print(rep_library.forest_page)
 
@@ -24,8 +25,11 @@ def fighting(fight_mode_ex):
 
     forest_fighter_3 = None
 
+    count_run = 0
+
 
     if fight_mode_ex == 0:
+
         forest_fighter_1 = [30, [8, 12]]   # статы гаргульи: 0 - хп; 1 - диапазон урона
 
         forest_fighter_2 = [20, [4, 10]]   # статы кабана
@@ -47,11 +51,16 @@ def fighting(fight_mode_ex):
     elif fight_mode_ex == 1:
         in_forest_fighter = [100, [15, 20]]   # статы Глаза
 
+
+    elif fight_mode_ex == 2:
+        in_forest_fighter = [50, [13, 15]]    # статы Стражника
+
+
     time.sleep(2)
 
 
 
-    while characters_stats.character_health > 0 and forest_action_choose != "бег" and in_forest_fighter[0] > 0:
+    while characters_stats.character_health > 0 and count_run != 3 and in_forest_fighter[0] > 0:
 
         forest_action_choose = input(rep_library.fight_choose)
         forest_action_choose = forest_action_choose.lower()
@@ -62,13 +71,16 @@ def fighting(fight_mode_ex):
             forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
             forest_action_choose = forest_action_choose.lower()
 
+
         if forest_action_choose == "справка":  # справка
             functions.reference()
             continue
 
+
         if forest_action_choose == "инвентарь" or forest_action_choose == "инв":
             functions.use_inventory()
             continue
+
 
         if forest_action_choose == "удар" or forest_action_choose == "уд":
             forest_character_damage = random.randint(characters_stats.character_damage[0], characters_stats.character_damage[1])
@@ -82,6 +94,17 @@ def fighting(fight_mode_ex):
 
             time.sleep(2)
 
+
+        if fight_mode_ex == 1 and forest_action_choose == "бег" and count_run != 3:
+                count_run += 1
+                if count_run != 3:
+                    print("Нужно пробовать убежать от него.\n"
+                        "Нужно бежать ещё", 3 - count_run, "раз!\n")
+
+                    time.sleep(1.5)
+
+
+
         if in_forest_fighter[0] != 0:
             enemy_damage = random.randint(in_forest_fighter[1][0], in_forest_fighter[1][1])
 
@@ -90,6 +113,12 @@ def fighting(fight_mode_ex):
             print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
 
             time.sleep(2)
+
+
+        if forest_action_choose == "бег" and fight_mode_ex == 0 and count_run != 3:
+            count_run += 3
+            print(rep_library.rep_run)
+            characters_stats.character_default_lvl -= 0.3
 
 
 
@@ -126,11 +155,6 @@ def fighting(fight_mode_ex):
                 characters_stats.character_coins += 1
 
 
-        if forest_action_choose == "бег":
-            print(rep_library.rep_run)
-            characters_stats.character_default_lvl -= 0.3
-
-
         forest_fighter_1[0] = 30
 
         forest_fighter_2[0] = 20
@@ -138,7 +162,7 @@ def fighting(fight_mode_ex):
         forest_fighter_3[0] = 5
 
 
-    elif fight_mode_ex == 1:
+    elif fight_mode_ex == 1:   # бой с Глазом
 
         if in_forest_fighter[0] < 1:
             characters_stats.character_default_health = 150
@@ -147,6 +171,16 @@ def fighting(fight_mode_ex):
             rep_library.rep_forest_fight_end_eye()
             characters_stats.character_default_lvl += 3
 
+
+        if count_run == 3:
+            rep_library.eye_fight_run()
+
+
+    if count_run == 3 and fight_mode_ex == 1:
+        characters_stats.character_default_lvl -= 0.6
+        print("lvl: - 0,6\n")
+
+        time.sleep(1.5)
 
 
     if characters_stats.character_health > 0:

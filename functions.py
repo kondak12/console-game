@@ -203,6 +203,7 @@ def use_inventory():
             use_pechenierka()
 
 
+
 def choose_fighter_rep(f_f, f_f_num, f_rep, f_param):
     if f_f == f_f_num:
         print(f_rep)

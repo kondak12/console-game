@@ -117,3 +117,5 @@ def act_2_actions():
             print(rep_library.rep_forest_fight_begin_eye)
 
             fight.fighting(1)
+
+    rep_library.act_2_end(functions.char_name)
