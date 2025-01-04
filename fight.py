@@ -25,6 +25,8 @@ def fighting(fight_mode_ex):
 
     count_run = 0
 
+    princess_help = 0
+
 
     if fight_mode_ex == 0:
 
@@ -54,7 +56,12 @@ def fighting(fight_mode_ex):
         in_forest_fighter = [50, [13, 15]]    # статы Стражника
 
 
-    time.sleep(1.5)
+    elif fight_mode_ex == 3:
+        in_forest_fighter = [100, [15, 20]]    # статы Дракона 1 фаза
+
+
+    elif fight_mode_ex == 4:
+        in_forest_fighter = [75,[20, 25]]     # статы Дракона 2 фаза
 
 
 
@@ -112,13 +119,45 @@ def fighting(fight_mode_ex):
                 time.sleep(1.5)
 
 
+        if (fight_mode_ex == 3 or fight_mode_ex == 4) and forest_action_choose == "бег":   # бой с Драконом
+            print("Выход завалило обломками!\n"
+                  "Бежать бесполезно...\n")
+
+            time.sleep(1.5)
+
+
 
         if in_forest_fighter[0] != 0:
             enemy_damage = random.randint(in_forest_fighter[1][0], in_forest_fighter[1][1])
 
-            print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
-            characters_stats.character_health -= enemy_damage
-            print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
+
+            if fight_mode_ex != 3 and fight_mode_ex != 4:
+                print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
+
+                characters_stats.character_health -= enemy_damage
+
+                print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
+
+
+            if fight_mode_ex == 3 or fight_mode_ex == 4:   # бой с Драконом
+                dragon_phrase = random.choice([f"{rep_library.dragon_phrase_1(enemy_damage)}", f"{rep_library.dragon_phrase_2(enemy_damage)}",
+                                               f"{rep_library.dragon_phrase_3(enemy_damage)}"])
+
+                print(f"{dragon_phrase}")
+
+                characters_stats.character_health -= enemy_damage
+                print("Здоровье персонажа ->", characters_stats.character_health, "\n")
+
+                if princess_help != 1 and characters_stats.character_health < 30:
+                    princess_help += 1
+
+                    print(rep_library.princess_help_phrase)
+
+                    characters_stats.character_inventory.append("медвежевика")
+                    characters_stats.character_inventory.append("медвежевика")
+                    characters_stats.character_inventory.append("медвежевика")
+
+                    time.sleep(1.5)
 
             time.sleep(1.5)
 
@@ -136,7 +175,7 @@ def fighting(fight_mode_ex):
             print(rep_library.rep_forest_fight_end_1)
             characters_stats.character_default_lvl += 0.6
 
-            if functions.chance(27):
+            if functions.chance(40):
                 print(rep_library.rep_forest_fight_coins_1)
                 characters_stats.character_coins += 3
 
@@ -149,7 +188,7 @@ def fighting(fight_mode_ex):
             if characters_stats.character_health > characters_stats.character_default_health:
                 characters_stats.character_health = characters_stats.character_default_health
 
-            if functions.chance(35):
+            if functions.chance(50):
                 print(rep_library.rep_forest_fight_coins_2)
                 characters_stats.character_coins += 2
 
@@ -158,7 +197,7 @@ def fighting(fight_mode_ex):
             print(rep_library.rep_forest_fight_end_3)
             characters_stats.character_default_lvl += 0.2
 
-            if functions.chance(40):
+            if functions.chance(60):
                 print(rep_library.rep_forest_fight_coins_3)
                 characters_stats.character_coins += 1
 

@@ -7,6 +7,7 @@ import functions
 import characters_stats
 
 import fight
+from rep_library import act_3_action_2
 
 
 def act_3_actions():
@@ -18,7 +19,7 @@ def act_3_actions():
     if act_3_action_1_num == "1":
 
         rep_library.act_3_action_1_choose_1()
-        fight.fighting(1.5)
+        fight.fighting(2)
 
 
     if act_3_action_1_num == "2":
@@ -27,3 +28,13 @@ def act_3_actions():
         characters_stats.character_key_inventory.append("платиновый меч")
         characters_stats.character_default_damage = [16, 20]
         rep_library.act_3_action_1_choose_2(characters_stats.character_dmg()[0], characters_stats.character_dmg()[1])
+
+
+
+    act_3_action_2_choose = act_3_action_2()
+
+    if act_3_action_2_choose == "1":
+
+        rep_library.act_3_action_2_choose_1(functions.char_name)
+
+        fight.fighting(3)
