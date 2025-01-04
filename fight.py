@@ -11,10 +11,6 @@ import time
 
 def fighting(fight_mode_ex):
 
-    if fight_mode_ex == 0:
-        print(rep_library.forest_page)
-
-
     in_forest_fighter = None
 
     forest_fighter_1 = None
@@ -29,6 +25,9 @@ def fighting(fight_mode_ex):
 
 
     if fight_mode_ex == 0:
+
+        print(rep_library.forest_page)
+
 
         forest_fighter_1 = [30, [8, 12]]   # статы гаргульи: 0 - хп; 1 - диапазон урона
 
@@ -46,6 +45,9 @@ def fighting(fight_mode_ex):
         functions.choose_fighter_rep(forest_fighter, forest_fighter_2, rep_library.reps[1], "Здоровье существа -> 20\n")
 
         functions.choose_fighter_rep(forest_fighter, forest_fighter_3, rep_library.reps[2], "Здоровье существа -> 10\n")
+
+
+        time.sleep(1.5)
 
 
     elif fight_mode_ex == 1:

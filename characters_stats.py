@@ -14,7 +14,7 @@ character_default_damage = [8, 12]
 def character_dmg():
     return [character_default_damage[0] + character_lvl, character_default_damage[1] + character_lvl]
 
-character_coins = 10
+character_coins = 3
 
 character_inventory = []
 character_key_inventory = []
