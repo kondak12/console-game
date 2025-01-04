@@ -9,9 +9,12 @@ character_default_lvl = 1
 character_lvl = int(character_default_lvl // 2)
 
 character_sword = "Деревянный меч"
-character_damage = [8 + character_lvl, 12 + character_lvl]
+character_default_damage = [8, 12]
 
-character_coins = 3
+def character_dmg():
+    return [character_default_damage[0] + character_lvl, character_default_damage[1] + character_lvl]
+
+character_coins = 10
 
 character_inventory = []
 character_key_inventory = []

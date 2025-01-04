@@ -70,10 +70,9 @@ def use_seller():
 
             characters_stats.character_key_inventory.append("железный меч")
 
-            print(rep_library.bought_seller_sword_1, "  Базовый урон -> от 12 до 16\n")
+            print(rep_library.bought_seller_sword_1, "  Базовый урон:   Мин. -> 12  /  Макс. -> 16\n")
 
-            characters_stats.character_damage[0] += 5
-            characters_stats.character_damage[1] += 5
+            characters_stats.character_default_damage = [12, 16]
 
             characters_stats.character_sword = "Железный меч"
 

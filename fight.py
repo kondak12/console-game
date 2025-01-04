@@ -54,7 +54,7 @@ def fighting(fight_mode_ex):
         in_forest_fighter = [50, [13, 15]]    # статы Стражника
 
 
-    time.sleep(2)
+    time.sleep(1.5)
 
 
 
@@ -81,7 +81,7 @@ def fighting(fight_mode_ex):
 
 
         if forest_action_choose == "удар" or forest_action_choose == "уд":
-            forest_character_damage = random.randint(characters_stats.character_damage[0], characters_stats.character_damage[1])
+            forest_character_damage = random.randint(characters_stats.character_dmg()[0], characters_stats.character_dmg()[1])
 
             in_forest_fighter[0] -= forest_character_damage
 
@@ -90,7 +90,7 @@ def fighting(fight_mode_ex):
 
             print("Вы нанесли", forest_character_damage, "урона врагу...  Здоровье врага ->", in_forest_fighter[0])
 
-            time.sleep(2)
+            time.sleep(1.5)
 
 
         if fight_mode_ex == 1 and forest_action_choose == "бег" and count_run != 3:
@@ -120,7 +120,7 @@ def fighting(fight_mode_ex):
             characters_stats.character_health -= enemy_damage
             print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
 
-            time.sleep(2)
+            time.sleep(1.5)
 
 
         if forest_action_choose == "бег" and fight_mode_ex == 0 and count_run != 3:
@@ -214,11 +214,11 @@ def fighting(fight_mode_ex):
         print("Здоровье персонажа  -> ", characters_stats.character_health)
         print("lvl  -> ", characters_stats.character_default_lvl,"\n")
 
-        time.sleep(3)
+        time.sleep(1.5)
 
 
     if characters_stats.character_health < 1:
         print("Враг оказался сильнее... \nВы програли!\n")
         characters_stats.game_status = 0
 
-        time.sleep(5)
+        time.sleep(3)

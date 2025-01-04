@@ -39,6 +39,9 @@ def reference():
     if ref_enter == "диалоги":
         print(input(rep_library.call_reference_dialogues))
 
+    if ref_enter == "совет":
+        print(input(rep_library.call_reference_advice))
+
 
 
 def menu():
@@ -89,29 +92,27 @@ def go_home():
 
     choose_home = input()
 
-    while choose_home != "уйти" and choose_home != "отдохнуть" and choose_home != "снаряжение":
+    while choose_home.lower() != "уйти" and choose_home.lower() != "отдохнуть" and choose_home.lower() != "снаряжение":
         print("Непонятные мысли лезут в голову, что это?")
         choose_home = input("Надо подумать снова -> ")
 
-    if choose_home == "справка":   # справка
+    if choose_home.lower() == "справка":   # справка
         reference()
 
-    if choose_home == "отдохнуть":
+    if choose_home.lower() == "отдохнуть":
         print("Пора бы отдохнуть... 'Вы заснули'.")
 
-        for i in "Z... Z... z...":
-            time.sleep(0.3)
-            print(i, end="")
+        print(input("Z... Z... z..."))
 
-        time.sleep(1.5)
+        time.sleep(1)
 
         characters_stats.character_health = characters_stats.character_default_health
         print("\n\nВы отдохнули. Здоровье восстановлено.")
 
 
     if choose_home == "снаряжение":
-        print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_damage[0],
-              " /  Макс. урон ->", characters_stats.character_damage[1])
+        print("У вас", characters_stats.character_sword + characters_stats.character_lvl, "    Мин. урон ->", characters_stats.character_dmg()[0] + characters_stats.character_lvl,
+              " /  Макс. урон ->", characters_stats.character_dmg()[1])
 
         print("У вас", characters_stats.character_cell_of_body,
               "    Макс. здоровье ->", characters_stats.character_default_health, "\n")
