@@ -1,5 +1,6 @@
 game_status = 1             # обозначения статуса игры: 2 - игра пройдена; 1 - персонаж жив; 0 - персонаж мёртв;
 act_2_trigger = 0
+save_number = None
 
 character_default_health = 100
 character_health = 100

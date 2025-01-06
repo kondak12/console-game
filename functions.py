@@ -13,6 +13,14 @@ import fight
 import seller
 
 
+def auto_save_game(name, hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, k_inv, sel_sw, sel_body_cell):
+    with open("save_game.txt", "w") as save_game_file:
+        save_game_file.write(f"{name}" + "\n" + f"{hp}" + "\n" + f"{d_lvl}" + "\n" + f"{d_dmg_0}" + "\n" + f"{d_dmg_1}" + "\n" +
+                             f"{sword_name}" + "\n" + f"{body_cell}" + "\n" + f"{coins}" + "\n" + f"{inv}" + "\n" + f"{k_inv}" +
+                             "\n" + f"{sel_sw}" + "\n" + f"{sel_body_cell}")
+
+
+
 def reference():
 
     print(rep_library.call_reference)
