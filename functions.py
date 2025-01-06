@@ -12,6 +12,11 @@ import fight
 
 import seller
 
+import act_2
+
+import act_3
+
+
 
 def name_char():
     characters_stats.character_name = input("Введите имя персонажа >> ")
@@ -51,7 +56,7 @@ def game_menu(act_number):
 
 
     if game_menu_choose == "главное меню" or game_menu_choose == "главное" or game_menu_choose == "глав":
-        menu()
+        game()
 
 
     if game_menu_choose == "выйти":
@@ -365,3 +370,20 @@ def chance(chance_number):
         return True
     else:
         return False
+
+
+def base_game():
+    menu()
+
+    name_char()
+
+    beginning_actions()
+
+    while characters_stats.game_status != 0 and characters_stats.act_2_trigger != 1:
+        choose_action()
+
+    if characters_stats.act_2_trigger == 1:
+        act_2.act_2_actions()
+
+    if characters_stats.game_status != 0:
+        act_3.act_3_actions()

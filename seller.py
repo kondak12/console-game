@@ -4,7 +4,6 @@ import rep_library
 
 import functions
 
-import time
 
 
 def use_seller():

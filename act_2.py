@@ -14,13 +14,13 @@ def act_2_actions():
 
     print(input(rep_library.act_2_action_1))
 
-    rep_library.act_2_action_2(functions.char_name)
+    rep_library.act_2_action_2(characters_stats.character_name)
 
     act_2_choose = input()
     act_2_choose = act_2_choose.lower()
 
     while act_2_choose != "стоять" and act_2_choose != "бежать":
-        act_2_choose = input("Ну же " + functions.char_name + ", думай! -> ")
+        act_2_choose = input("Ну же " + characters_stats.character_name + ", думай! -> ")
         act_2_choose = act_2_choose.lower()
 
 
