@@ -99,7 +99,11 @@ def reference():
 
 
 def menu():
-    print("\nНОВАЯ ИГРА / ПРОДОЛЖИТЬ / ВЫХОД\n")
+    print(rep_library.art)
+
+    print("\n            <----- НОВАЯ ИГРА ----->\n"
+          "           <------ ПРОДОЛЖИТЬ ------>\n"
+          "            <------- ВЫХОД -------->\n")
 
     enter = input("Введите команду >> ")
     enter = enter.lower()
