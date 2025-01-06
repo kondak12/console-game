@@ -2,6 +2,8 @@ game_status = 1             # обозначения статуса игры: 2 
 act_2_trigger = 0
 save_number = None
 
+character_name = ""
+
 character_default_health = 100
 character_health = 100
 character_cell_of_body = "Ячейка крепкости тела 1"

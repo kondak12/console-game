@@ -118,4 +118,4 @@ def act_2_actions():
 
             fight.fighting(1)
 
-    rep_library.act_2_end(functions.char_name)
+    rep_library.act_2_end(functions.characters_stats.character_name)

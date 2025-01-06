@@ -23,7 +23,6 @@ def use_seller():
         for i in seller_items:
             print(i)
 
-        time.sleep(3)
 
 
         print("\nВведите 'уйти' чтобы уйти")

@@ -13,11 +13,57 @@ import fight
 import seller
 
 
-def auto_save_game(name, hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, k_inv, sel_sw, sel_body_cell):
+def name_char():
+    characters_stats.character_name = input("Введите имя персонажа >> ")
+
+    while characters_stats.character_name.isdigit() or characters_stats.character_name == "":
+        characters_stats.character_name = input("Это точно имя? Попробуй ещё раз, дружок >> ")
+
+
+
+def game_menu(act_number):
+    print("\n*----- ПРОДОЛЖИТЬ ----->\n"
+          "*--- СОХРАНИТЬ ИГРУ --->\n"
+          "*---- ГЛАВНОЕ МЕНЮ ---->\n"
+          "*------- ВЫЙТИ -------->\n")
+
+    game_menu_choose = input("Введите команду -> ")
+    game_menu_choose = game_menu_choose.lower()
+
+    game_menu_choose_list = ["продолжить", "прод", "сохранить иру" ,
+                             "сохранить" , "сохр" , "главное меню",
+                             "главное" , "глав" , "выйти"]
+
+    while game_menu_choose not in game_menu_choose_list:
+        game_menu_choose = input("Неизвестная команда. Введите команду -> ")
+        game_menu_choose = game_menu_choose.lower()
+
+
+    if game_menu_choose == "сохранить игру" or game_menu_choose == "сохранить" or game_menu_choose == "сохр":
+        save_game(characters_stats.character_name, characters_stats.character_health,
+                  characters_stats.character_default_lvl,
+                  characters_stats.character_dmg()[0], characters_stats.character_dmg()[1],
+                  characters_stats.character_sword, characters_stats.character_cell_of_body,
+                  characters_stats.character_coins, characters_stats.character_inventory,
+                  characters_stats.character_key_inventory, 1, 1, act_number)
+
+        print("\nИгра сохранена!")
+
+
+    if game_menu_choose == "главное меню" or game_menu_choose == "главное" or game_menu_choose == "глав":
+        menu()
+
+
+    if game_menu_choose == "выйти":
+        sys.exit()
+
+
+
+def save_game(name, hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, k_inv, sel_sw, sel_body_cell, act_number):
     with open("save_game.txt", "w") as save_game_file:
         save_game_file.write(f"{name}" + "\n" + f"{hp}" + "\n" + f"{d_lvl}" + "\n" + f"{d_dmg_0}" + "\n" + f"{d_dmg_1}" + "\n" +
                              f"{sword_name}" + "\n" + f"{body_cell}" + "\n" + f"{coins}" + "\n" + f"{inv}" + "\n" + f"{k_inv}" +
-                             "\n" + f"{sel_sw}" + "\n" + f"{sel_body_cell}")
+                             "\n" + f"{sel_sw}" + "\n" + f"{sel_body_cell}" + "\n" + f"{act_number}")
 
 
 
@@ -53,30 +99,19 @@ def reference():
 
 
 def menu():
-    print()
-    print("СТАРТ /", "ВЫХОД", "\n")
+    print("\nНОВАЯ ИГРА / ПРОДОЛЖИТЬ / ВЫХОД\n")
 
     enter = input("Введите команду >> ")
     enter = enter.lower()
 
-    while enter != "старт" and enter != "выход":
-        enter = input("\n" + "Хороший выбор! Повторите попытку." + "\n" + "Введите команду >> ")
+    while enter != "новая игра" and enter != "новая" and enter != "продолжить" and enter != "выход":
+        enter = input("\nНеизвестная команда!\nВведите команду >> ")
         enter = enter.lower()
 
     if enter == "выход":
         sys.exit()
 
     return enter
-
-
-
-def name_char():
-    name = input("Введите имя персонажа >> ")
-
-    while name.isdigit() or name == "":
-        name = input("Это точно имя? Попробуй ещё раз, дружок >> ")
-
-    return name
 
 
 
@@ -88,7 +123,7 @@ def beginning_actions():
 
     print(input(rep_library.reference_in_beginning))
 
-    rep_library.beginning_scene_in_game(char_name)
+    rep_library.beginning_scene_in_game(characters_stats.character_name)
 
     print(input(rep_library.act_1))
 
@@ -225,14 +260,14 @@ def choose_action():
     print("Выберите локацию, куда отправитесь: ")
 
     if characters_stats.character_default_lvl < 3:
-        print("Дом / Лес / Торговец")
+        print("Дом / Лес / Торговец // Меню")
     else:
-        print("Дом / Лес / Торговец / Тропа")
+        print("Дом / Лес / Торговец / Тропа // Меню")
 
     choose = input()
     choose = choose.lower()
 
-    choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв", "справка"]
+    choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв", "справка", "меню"]
 
     if characters_stats.character_default_lvl >= 3:
         choose_list.append("тропа")
@@ -283,6 +318,10 @@ def choose_action():
         reference()
 
 
+    if choose == "меню":
+        game_menu(1)
+
+
 
 def seller_choise(sell_item, item_name, phrase_before_sell, phrase_item):
 
@@ -322,8 +361,3 @@ def chance(chance_number):
         return True
     else:
         return False
-
-
-
-start_key = menu()
-char_name = name_char()

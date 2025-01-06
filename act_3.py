@@ -1,5 +1,3 @@
-import time
-
 import rep_library
 
 import functions
@@ -7,7 +5,7 @@ import functions
 import characters_stats
 
 import fight
-from rep_library import act_3_action_2
+
 
 
 def act_3_actions():
@@ -31,10 +29,10 @@ def act_3_actions():
 
 
 
-    act_3_action_2_choose = act_3_action_2()
+    act_3_action_2_choose = rep_library.act_3_action_2()
 
     if act_3_action_2_choose == "1":
 
-        rep_library.act_3_action_2_choose_1(functions.char_name)
+        rep_library.act_3_action_2_choose_1(functions.characters_stats.character_name)
 
         fight.fighting(3)
