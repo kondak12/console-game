@@ -18,6 +18,6 @@ def character_dmg():
     return [character_default_damage[0] + character_lvl, character_default_damage[1] + character_lvl]
 
 character_coins = 3
+seller_triggers = [1, 1]
 
 character_inventory = []
-character_key_inventory = []

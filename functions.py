@@ -50,13 +50,13 @@ def game_menu(act_number):
                   characters_stats.character_dmg()[0], characters_stats.character_dmg()[1],
                   characters_stats.character_sword, characters_stats.character_cell_of_body,
                   characters_stats.character_coins, characters_stats.character_inventory,
-                  characters_stats.character_key_inventory, 1, 1, act_number)
+                  characters_stats.seller_triggers[0], characters_stats.seller_triggers[1], act_number)
 
         print("\nИгра сохранена!")
 
 
     if game_menu_choose == "главное меню" or game_menu_choose == "главное" or game_menu_choose == "глав":
-        game()
+        base_game()
 
 
     if game_menu_choose == "выйти":
@@ -64,11 +64,11 @@ def game_menu(act_number):
 
 
 
-def save_game(name, hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, k_inv, sel_sw, sel_body_cell, act_number):
+def save_game(name, hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, sel_sw, sel_body_cell, act_number):
     with open("save_game.txt", "w") as save_game_file:
         save_game_file.write(f"{name}" + "\n" + f"{hp}" + "\n" + f"{d_lvl}" + "\n" + f"{d_dmg_0}" + "\n" + f"{d_dmg_1}" + "\n" +
-                             f"{sword_name}" + "\n" + f"{body_cell}" + "\n" + f"{coins}" + "\n" + f"{inv}" + "\n" + f"{k_inv}" +
-                             "\n" + f"{sel_sw}" + "\n" + f"{sel_body_cell}" + "\n" + f"{act_number}")
+                             f"{sword_name}" + "\n" + f"{body_cell}" + "\n" + f"{coins}" + "\n" + f"{inv}" + "\n" +
+                             f"{sel_sw}" + "\n" + f"{sel_body_cell}" + "\n" + f"{act_number}")
 
 
 

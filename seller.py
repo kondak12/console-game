@@ -61,12 +61,10 @@ def use_seller():
 
     if seller_choose == "железный меч":
 
-        if "железный меч" not in characters_stats.character_key_inventory:
+        if characters_stats.seller_triggers[0] != 0:
 
             functions.seller_choise(rep_library.seller_sword_1[-1], rep_library.seller_sword_1[1],
                                     rep_library.seller_sword_1[2], rep_library.seller_sword_1[3])
-
-            characters_stats.character_key_inventory.append("железный меч")
 
             print(rep_library.bought_seller_sword_1, "  Базовый урон:   Мин. -> 12  /  Макс. -> 16\n")
 
@@ -76,6 +74,8 @@ def use_seller():
 
             rep_library.seller_sword_1[0] = "Железный меч -> ПРОДАНО"
 
+            characters_stats.seller_triggers[0] = 0
+
         else:
             print("Такого меча я уже не сделаю, парень...\n")
 
@@ -83,11 +83,9 @@ def use_seller():
 
     if seller_choose == "ячейка крепкости 2":
 
-        if "ячейка крепкости 2" not in characters_stats.character_key_inventory:
+        if characters_stats.seller_triggers[1] != 0:
             functions.seller_choise(rep_library.seller_cell_of_body_2[-1], rep_library.seller_cell_of_body_2[1],
                                     rep_library.seller_cell_of_body_2[2], rep_library.seller_cell_of_body_2[3])
-
-            characters_stats.character_key_inventory.append("ячейка крепкости 2")
 
             print(rep_library.bought_cell_of_body_2, "  Макс. здоровье -> 130\n")
 
@@ -97,6 +95,8 @@ def use_seller():
             characters_stats.character_cell_of_body = "Ячейка крепкости тела 2"
 
             rep_library.seller_cell_of_body_2[0] = "Ячейка крепкости 2 -> ПРОДАНО"
+
+            characters_stats.seller_triggers[1] = 0
 
         else:
             print("Медальон был только один.\n")
