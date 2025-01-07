@@ -87,21 +87,21 @@ def load_game():
 
         save_game_file = save_game_file.read()
 
-        save_game_file.split("\n")
+        save_game_file = save_game_file.split("\n")
 
-        characters_stats.character_name = f"{save_game_file[0]}"
+        characters_stats.character_name = save_game_file[0]
         characters_stats.character_health = int(save_game_file[1])
-        characters_stats.character_default_health = int(save_game_file[2])
-        characters_stats.character_default_lvl = float(save_game_file[3])
-        characters_stats.character_dmg()[0] = int(save_game_file[4])
-        characters_stats.character_dmg()[1] = int(save_game_file[5])
+        characters_stats.character_default_health = f"{save_game_file[2]}"
+        characters_stats.character_default_lvl = save_game_file[3]
+        characters_stats.character_dmg()[0] = f"{save_game_file[4]}"
+        characters_stats.character_dmg()[1] = f"{save_game_file[5]}"
         characters_stats.character_sword = f"{save_game_file[6]}"
         characters_stats.character_cell_of_body = f"{save_game_file[7]}"
-        characters_stats.character_coins = int(save_game_file[8])
-        characters_stats.character_inventory = save_game_file[9]
-        characters_stats.seller_triggers[0] = int(save_game_file[10])
-        characters_stats.seller_triggers[1] = int(save_game_file[11])
-        characters_stats.save_number = int(save_game_file[12])
+        characters_stats.character_coins = f"{save_game_file[8]}"
+        characters_stats.character_inventory = f"{save_game_file[9]}"
+        characters_stats.seller_triggers[0] = f"{save_game_file[10]}"
+        characters_stats.seller_triggers[1] = f"{save_game_file[11]}"
+        characters_stats.save_number = f"{save_game_file[12]}"
 
 
 
@@ -146,18 +146,43 @@ def menu():
     enter = input("Введите команду >> ")
     enter = enter.lower()
 
-    while enter != "новая игра" and enter != "новая" and enter != "продолжить" and enter != "выход":
+    while enter != "новая игра" and enter != "новая" and enter != "продолжить" and enter != "прод" and enter != "выход":
         enter = input("\nНеизвестная команда!\nВведите команду >> ")
         enter = enter.lower()
 
-    if enter == "продолжить" or "прод":
+
+    if enter == "новая игра" or enter == "новая":
+        name_char()
+        beginning_actions()
+        enter = 1
+
+
+    if enter == "продолжить" or enter == "прод":
         load_game()
+        acts_playing()
+
 
     if enter == "выход":
         sys.exit()
 
     return enter
 
+
+
+def autosave_question(act_num):
+    save_trigger = input("\nХотите сохранить текущий прогресс?\nДа / Нет\nВыбор >> ")
+
+    while save_trigger.lower() != "нет" and save_trigger != "да":
+        save_trigger = input("\nХотите сохранить текущий прогресс?\nДа / Нет\nВыбор >> ")
+        save_trigger = save_trigger.lower()
+
+    if save_trigger == "да":
+        save_game(characters_stats.character_name, characters_stats.character_health,
+                  characters_stats.character_default_health, characters_stats.character_default_lvl,
+                  characters_stats.character_dmg()[0], characters_stats.character_dmg()[1],
+                  characters_stats.character_sword, characters_stats.character_cell_of_body,
+                  characters_stats.character_coins, characters_stats.character_inventory,
+                  characters_stats.seller_triggers[0], characters_stats.seller_triggers[1], act_num)
 
 
 def beginning_actions():
@@ -300,71 +325,76 @@ def choose_fighter_rep(f_f, f_f_num, f_rep, f_param):
 
 
 
-def choose_action():
+def act_1():
+    while characters_stats.game_status != 0:
 
-    print("Выберите локацию, куда отправитесь: ")
+        print("Выберите локацию, куда отправитесь: ")
 
-    if characters_stats.character_default_lvl < 3:
-        print("Дом / Лес / Торговец // Меню")
-    else:
-        print("Дом / Лес / Торговец / Тропа // Меню")
+        if int(characters_stats.character_default_lvl) < 3:
+            print("Дом / Лес / Торговец // Меню")
+        else:
+            print("Дом / Лес / Торговец / Тропа // Меню")
 
-    choose = input()
-    choose = choose.lower()
-
-    choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв", "справка", "меню"]
-
-    if characters_stats.character_default_lvl >= 3:
-        choose_list.append("тропа")
-
-    while choose not in choose_list:
-        choose = input("\n" + "Вы пробормотали что-то под нос..." + "\n" +  "Выберите локацию, куда отправитесь: ")
+        choose = input()
         choose = choose.lower()
 
+        choose_list = ["инвентарь", "торговец", "лес", "дом", "торг", "инв", "справка", "меню"]
 
-    if choose == "дом":
-        go_home()
+        if int(characters_stats.character_default_lvl) >= 3:
+            choose_list.append("тропа")
 
-
-    if choose == "лес":
-
-        fight.fighting(0)
-
-
-    if choose == "торговец" or choose == "торг":
-
-        seller.use_seller()
+        while choose not in choose_list:
+            choose = input("\n" + "Вы пробормотали что-то под нос..." + "\n" +  "Выберите локацию, куда отправитесь: ")
+            choose = choose.lower()
 
 
-    if choose == "тропа" and characters_stats.character_default_lvl >= 3:
-        rep_library.act_2_recomendations()
+        if choose == "дом":
+            go_home()
 
-        choose_begin_act_2 = input("Хмм.. -> ")
-        choose_begin_act_2 = choose_begin_act_2.lower()
 
-        while choose_begin_act_2 != "идти" and choose_begin_act_2 != "остаться":
-            choose_begin_act_2 = input("Хмммм.. -> ")
+        if choose == "лес":
+            fight.fighting(0)
+
+
+        if choose == "торговец" or choose == "торг":
+            seller.use_seller()
+
+
+        if choose == "тропа" and characters_stats.character_default_lvl >= 3:
+            rep_library.act_2_recomendations()
+
+            choose_begin_act_2 = input("Хмм.. -> ")
             choose_begin_act_2 = choose_begin_act_2.lower()
 
-        if choose_begin_act_2 == "идти":
-            characters_stats.act_2_trigger = 1
-
-        elif choose_begin_act_2 == "остаться":
-            print("Ещё чутка потренеруюсь...\n")
+            while choose_begin_act_2 != "идти" and choose_begin_act_2 != "остаться":
+                choose_begin_act_2 = input("Хмммм.. -> ")
+                choose_begin_act_2 = choose_begin_act_2.lower()
 
 
-    if choose == "инвентарь" or choose == "инв":
+            if choose_begin_act_2 == "идти":
+                characters_stats.save_number = 2
 
-        use_inventory()
+                autosave_question(characters_stats.save_number)
 
-
-    if choose == "справка":   # справка
-
-        reference()
+                break
 
 
-    if choose == "меню":
-        game_menu(1)
+            elif choose_begin_act_2 == "остаться":
+                print("Ещё чутка потренеруюсь...\n")
+
+
+        if choose == "инвентарь" or choose == "инв":
+
+            use_inventory()
+
+
+        if choose == "справка":   # справка
+
+            reference()
+
+
+        if choose == "меню":
+            game_menu(1)
 
 
 
@@ -409,18 +439,22 @@ def chance(chance_number):
 
 
 
+def acts_playing():
+    if int(characters_stats.save_number) == 1:
+        act_1()
+
+    if int(characters_stats.save_number) == 2:
+        if int(characters_stats.game_status) != 0:
+            act_2.act_2_actions()
+
+    if int(characters_stats.save_number) == 3:
+        if characters_stats.game_status != 0:
+            act_3.act_3_actions()
+
+
+
 def base_game():
-    menu()
+    menu_trigger = menu()
 
-    name_char()
-
-    beginning_actions()
-
-    while characters_stats.game_status != 0 and characters_stats.act_2_trigger != 1:
-        choose_action()
-
-    if characters_stats.act_2_trigger == 1:
-        act_2.act_2_actions()
-
-    if characters_stats.game_status != 0:
-        act_3.act_3_actions()
+    if menu_trigger == 1:
+        acts_playing()

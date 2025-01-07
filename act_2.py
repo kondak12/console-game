@@ -119,3 +119,5 @@ def act_2_actions():
             fight.fighting(1)
 
     rep_library.act_2_end(functions.characters_stats.character_name)
+    characters_stats.save_number = 3
+    functions.autosave_question(characters_stats.save_number)

@@ -67,7 +67,7 @@ def fighting(fight_mode_ex):
 
 
 
-    while characters_stats.character_health > 0 and count_run != 3 and in_forest_fighter[0] > 0:
+    while int(characters_stats.character_health) > 0 and count_run != 3 and in_forest_fighter[0] > 0:
 
         forest_action_choose = input(rep_library.fight_choose)
         forest_action_choose = forest_action_choose.lower()
