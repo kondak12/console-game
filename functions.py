@@ -46,7 +46,7 @@ def game_menu(act_number):
 
     if game_menu_choose == "сохранить игру" or game_menu_choose == "сохранить" or game_menu_choose == "сохр":
         save_game(characters_stats.character_name, characters_stats.character_health,
-                  characters_stats.character_default_lvl,
+                  characters_stats.character_default_health, characters_stats.character_default_lvl,
                   characters_stats.character_dmg()[0], characters_stats.character_dmg()[1],
                   characters_stats.character_sword, characters_stats.character_cell_of_body,
                   characters_stats.character_coins, characters_stats.character_inventory,
@@ -64,11 +64,44 @@ def game_menu(act_number):
 
 
 
-def save_game(name, hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, sel_sw, sel_body_cell, act_number):
+def save_game(name, hp, d_hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, sel_sw, sel_body_cell, act_number):
     with open("save_game.txt", "w") as save_game_file:
-        save_game_file.write(f"{name}" + "\n" + f"{hp}" + "\n" + f"{d_lvl}" + "\n" + f"{d_dmg_0}" + "\n" + f"{d_dmg_1}" + "\n" +
-                             f"{sword_name}" + "\n" + f"{body_cell}" + "\n" + f"{coins}" + "\n" + f"{inv}" + "\n" +
-                             f"{sel_sw}" + "\n" + f"{sel_body_cell}" + "\n" + f"{act_number}")
+        save_game_file.write(f"{name}" + "\n" +
+                             f"{hp}" + "\n" +
+                             f"{d_hp}" + "\n" +
+                             f"{d_lvl}" + "\n" +
+                             f"{d_dmg_0}" + "\n" +
+                             f"{d_dmg_1}" + "\n" +
+                             f"{sword_name}" + "\n" +
+                             f"{body_cell}" + "\n" +
+                             f"{coins}" + "\n" +
+                             f"{inv}" + "\n" +
+                             f"{sel_sw}" + "\n" +
+                             f"{sel_body_cell}" + "\n" +
+                             f"{act_number}")
+
+
+
+def load_game():
+    with open("save_game.txt", "r") as save_game_file:
+
+        save_game_file = save_game_file.read()
+
+        save_game_file.split("\n")
+
+        characters_stats.character_name = f"{save_game_file[0]}"
+        characters_stats.character_health = int(save_game_file[1])
+        characters_stats.character_default_health = int(save_game_file[2])
+        characters_stats.character_default_lvl = float(save_game_file[3])
+        characters_stats.character_dmg()[0] = int(save_game_file[4])
+        characters_stats.character_dmg()[1] = int(save_game_file[5])
+        characters_stats.character_sword = f"{save_game_file[6]}"
+        characters_stats.character_cell_of_body = f"{save_game_file[7]}"
+        characters_stats.character_coins = int(save_game_file[8])
+        characters_stats.character_inventory = save_game_file[9]
+        characters_stats.seller_triggers[0] = int(save_game_file[10])
+        characters_stats.seller_triggers[1] = int(save_game_file[11])
+        characters_stats.save_number = int(save_game_file[12])
 
 
 
@@ -116,6 +149,9 @@ def menu():
     while enter != "новая игра" and enter != "новая" and enter != "продолжить" and enter != "выход":
         enter = input("\nНеизвестная команда!\nВведите команду >> ")
         enter = enter.lower()
+
+    if enter == "продолжить" or "прод":
+        load_game()
 
     if enter == "выход":
         sys.exit()
@@ -370,6 +406,7 @@ def chance(chance_number):
         return True
     else:
         return False
+
 
 
 def base_game():
