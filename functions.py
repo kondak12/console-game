@@ -185,6 +185,7 @@ def autosave_question(act_num):
                   characters_stats.seller_triggers[0], characters_stats.seller_triggers[1], act_num)
 
 
+
 def beginning_actions():
 
     print(input(rep_library.beginning))
@@ -224,7 +225,7 @@ def go_home():
 
 
     if choose_home == "снаряжение":
-        print("У вас", characters_stats.character_sword + characters_stats.character_lvl, "    Мин. урон ->", characters_stats.character_dmg()[0] + characters_stats.character_lvl,
+        print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_dmg()[0] + characters_stats.character_lvl,
               " /  Макс. урон ->", characters_stats.character_dmg()[1])
 
         print("У вас", characters_stats.character_cell_of_body,
