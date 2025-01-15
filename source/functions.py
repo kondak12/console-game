@@ -1,21 +1,12 @@
 import sys
-
 import time
-
 import random
-
-import characters_stats
-
-import rep_library
-
-import fight
-
-import seller
-
-import act_2
-
-import act_3
-
+from source import characters_stats
+from source import rep_library
+from source import fight
+from source import seller
+from source import act_2
+from source import act_3
 
 
 def name_char():
@@ -23,7 +14,6 @@ def name_char():
 
     while characters_stats.character_name.isdigit() or characters_stats.character_name == "":
         characters_stats.character_name = input("Это точно имя? Попробуй ещё раз, дружок >> ")
-
 
 
 def game_menu(act_number):
@@ -97,7 +87,7 @@ def load_game():
         characters_stats.character_dmg()[1] = f"{save_game_file[5]}"
         characters_stats.character_sword = f"{save_game_file[6]}"
         characters_stats.character_cell_of_body = f"{save_game_file[7]}"
-        characters_stats.character_coins = f"{save_game_file[8]}"
+        characters_stats.character_coins = int(save_game_file[8])
         characters_stats.character_inventory = f"{save_game_file[9]}"
         characters_stats.seller_triggers[0] = f"{save_game_file[10]}"
         characters_stats.seller_triggers[1] = f"{save_game_file[11]}"
@@ -218,10 +208,8 @@ def go_home():
 
         print(input("Z... Z... z..."))
 
-        time.sleep(1)
-
         characters_stats.character_health = characters_stats.character_default_health
-        print("\n\nВы отдохнули. Здоровье восстановлено.")
+        print("\nВы отдохнули. Здоровье восстановлено.")
 
 
     if choose_home == "снаряжение":

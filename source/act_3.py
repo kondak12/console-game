@@ -1,10 +1,7 @@
-import rep_library
-
-import functions
-
-import characters_stats
-
-import fight
+from source import rep_library
+from source import functions
+from source import characters_stats
+from source import fight
 
 
 

@@ -1,12 +1,8 @@
 import random
-
-import characters_stats
-
-import functions
-
-import rep_library
-
 import time
+from source import characters_stats
+from source import functions
+from source import rep_library
 
 
 def fighting(fight_mode_ex):

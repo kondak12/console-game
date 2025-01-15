@@ -1,15 +1,13 @@
-import characters_stats
-
-import rep_library
-
-import functions
+from source import characters_stats
+from source import rep_library
+from source import functions
 
 
 
 def use_seller():
     print(input(rep_library.seller_page))
 
-    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_pechenierka[0]}", f"{rep_library.seller_sword_1[0]}",
+    seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_pechenierka[0]}", f"{rep_library.seller_sword[0]}",
                     f"{rep_library.seller_cell_of_body_2[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]
 
     seller_keyword_list = ["медвежевика", "мед", "печеньерка", "печ", "уйти", "инвентарь", "инв", "железный меч", "ячейка крепкости 2", "справка"]
@@ -41,11 +39,9 @@ def use_seller():
         functions.reference()
 
 
-
     if seller_choose == "инвентарь" or seller_choose == "инв":
 
         functions.use_inventory()
-
 
 
     if seller_choose == "медвежевика" or seller_choose == "мед":
@@ -59,20 +55,20 @@ def use_seller():
                                 rep_library.seller_pechenierka[2], rep_library.seller_pechenierka[3])
 
 
-    if seller_choose == "железный меч":
+    if seller_choose == f"{rep_library.seller_sword[1]}":
 
-        if characters_stats.seller_triggers[0] != 0:
+        if characters_stats.seller_triggers[0] == 1:
 
-            functions.seller_choise(rep_library.seller_sword_1[-1], rep_library.seller_sword_1[1],
-                                    rep_library.seller_sword_1[2], rep_library.seller_sword_1[3])
+            functions.seller_choise(rep_library.seller_sword[-1], rep_library.seller_sword[1],
+                                    rep_library.seller_sword[2], rep_library.seller_sword[3])
 
-            print(rep_library.bought_seller_sword_1, "  Базовый урон:   Мин. -> 12  /  Макс. -> 16\n")
+            print(rep_library.bought_seller_sword, "  Базовый урон:   Мин. -> 12  /  Макс. -> 16\n")
 
             characters_stats.character_default_damage = [12, 16]
 
             characters_stats.character_sword = "Железный меч"
 
-            rep_library.seller_sword_1[0] = "Железный меч -> ПРОДАНО"
+            rep_library.seller_sword[0] = "Железный меч -> ПРОДАНО"
 
             characters_stats.seller_triggers[0] = 0
 
@@ -80,10 +76,9 @@ def use_seller():
             print("Такого меча я уже не сделаю, парень...\n")
 
 
+    if seller_choose == f"{rep_library.seller_cell_of_body_2[1]}":
 
-    if seller_choose == "ячейка крепкости 2":
-
-        if characters_stats.seller_triggers[1] != 0:
+        if characters_stats.seller_triggers[1] == 1:
             functions.seller_choise(rep_library.seller_cell_of_body_2[-1], rep_library.seller_cell_of_body_2[1],
                                     rep_library.seller_cell_of_body_2[2], rep_library.seller_cell_of_body_2[3])
 
