@@ -4,7 +4,6 @@ from source import characters_stats
 from source import fight
 
 
-
 def act_3_actions():
     print(input(rep_library.act_3_beginning))
 
@@ -29,6 +28,17 @@ def act_3_actions():
 
     if act_3_action_2_choose == "1":
 
-        rep_library.act_3_action_2_choose_1(functions.characters_stats.character_name)
+        rep_library.act_3_action_2_choose_1_phase_1(functions.characters_stats.character_name)
 
         fight.fighting(3)
+
+        act_3_action_2_choose = rep_library.act_3_action_2_choose_1_phase_2()
+
+
+        if act_3_action_2_choose == "1":
+            rep_library.act_3_action_2_choose_1_phase_2_1()
+
+            fight.fighting(4)
+
+            if characters_stats.game_status == 0:
+                rep_library.bad_ending_1(characters_stats.character_name)

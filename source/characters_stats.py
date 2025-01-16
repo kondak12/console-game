@@ -1,5 +1,6 @@
 from source import rep_library
 
+
 game_status = 1             # обозначения статуса игры: 2 - игра пройдена; 1 - персонаж жив; 0 - персонаж мёртв;
 save_number = 1
 

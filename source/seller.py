@@ -3,7 +3,6 @@ from source import rep_library
 from source import functions
 
 
-
 def use_seller():
     print(input(rep_library.seller_page))
 

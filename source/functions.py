@@ -1,6 +1,7 @@
 import sys
 import time
 import random
+import source
 from source import characters_stats
 from source import rep_library
 from source import fight
@@ -55,7 +56,7 @@ def game_menu(act_number):
 
 
 def save_game(name, hp, d_hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, coins, inv, sel_sw, sel_body_cell, act_number):
-    with open("save_game.txt", "w") as save_game_file:
+    with open("source/save_game.txt", "w") as save_game_file:
         save_game_file.write(f"{name}" + "\n" +
                              f"{hp}" + "\n" +
                              f"{d_hp}" + "\n" +
@@ -73,7 +74,7 @@ def save_game(name, hp, d_hp, d_lvl, d_dmg_0, d_dmg_1, sword_name, body_cell, co
 
 
 def load_game():
-    with open("save_game.txt", "r") as save_game_file:
+    with open("source/save_game.txt", "r") as save_game_file:
 
         save_game_file = save_game_file.read()
 
@@ -81,17 +82,17 @@ def load_game():
 
         characters_stats.character_name = save_game_file[0]
         characters_stats.character_health = int(save_game_file[1])
-        characters_stats.character_default_health = f"{save_game_file[2]}"
-        characters_stats.character_default_lvl = save_game_file[3]
-        characters_stats.character_dmg()[0] = f"{save_game_file[4]}"
-        characters_stats.character_dmg()[1] = f"{save_game_file[5]}"
+        characters_stats.character_default_health = int(save_game_file[2])
+        characters_stats.character_default_lvl = float(save_game_file[3])
+        characters_stats.character_dmg()[0] = int(save_game_file[4])
+        characters_stats.character_dmg()[1] = int(save_game_file[5])
         characters_stats.character_sword = f"{save_game_file[6]}"
         characters_stats.character_cell_of_body = f"{save_game_file[7]}"
         characters_stats.character_coins = int(save_game_file[8])
-        characters_stats.character_inventory = f"{save_game_file[9]}"
-        characters_stats.seller_triggers[0] = f"{save_game_file[10]}"
-        characters_stats.seller_triggers[1] = f"{save_game_file[11]}"
-        characters_stats.save_number = f"{save_game_file[12]}"
+        characters_stats.character_inventory = save_game_file[9]
+        characters_stats.seller_triggers[0] = int(save_game_file[10])
+        characters_stats.seller_triggers[1] = int(save_game_file[11])
+        characters_stats.save_number = int(save_game_file[12])
 
 
 
@@ -159,10 +160,10 @@ def menu():
 
 
 
-def autosave_question(act_num):
+def autosave_question():
     save_trigger = input("\nХотите сохранить текущий прогресс?\nДа / Нет\nВыбор >> ")
 
-    while save_trigger.lower() != "нет" and save_trigger != "да":
+    while save_trigger.lower() != "нет" and save_trigger.lower() != "да":
         save_trigger = input("\nХотите сохранить текущий прогресс?\nДа / Нет\nВыбор >> ")
         save_trigger = save_trigger.lower()
 
@@ -172,7 +173,8 @@ def autosave_question(act_num):
                   characters_stats.character_dmg()[0], characters_stats.character_dmg()[1],
                   characters_stats.character_sword, characters_stats.character_cell_of_body,
                   characters_stats.character_coins, characters_stats.character_inventory,
-                  characters_stats.seller_triggers[0], characters_stats.seller_triggers[1], act_num)
+                  characters_stats.seller_triggers[0], characters_stats.seller_triggers[1],
+                  characters_stats.save_number)
 
 
 
@@ -363,7 +365,7 @@ def act_1():
             if choose_begin_act_2 == "идти":
                 characters_stats.save_number = 2
 
-                autosave_question(characters_stats.save_number)
+                autosave_question()
 
                 break
 
@@ -429,14 +431,14 @@ def chance(chance_number):
 
 
 def acts_playing():
-    if int(characters_stats.save_number) == 1:
+    if characters_stats.save_number == 1:
         act_1()
 
-    if int(characters_stats.save_number) == 2:
-        if int(characters_stats.game_status) != 0:
+    if characters_stats.save_number == 2:
+        if characters_stats.game_status != 0:
             act_2.act_2_actions()
 
-    if int(characters_stats.save_number) == 3:
+    if characters_stats.save_number == 3:
         if characters_stats.game_status != 0:
             act_3.act_3_actions()
 

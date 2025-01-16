@@ -59,7 +59,7 @@ def fighting(fight_mode_ex):
 
 
     elif fight_mode_ex == 4:
-        in_forest_fighter = [75,[20, 25]]     # статы Дракона 2 фаза
+        in_forest_fighter = [75,[22, 27]]     # статы Дракона 2 фаза
 
 
 
@@ -255,7 +255,9 @@ def fighting(fight_mode_ex):
 
 
     if characters_stats.character_health < 1:
-        print("Враг оказался сильнее... \nВы програли!\n")
         characters_stats.game_status = 0
 
-        time.sleep(3)
+        if fight_mode_ex != 4:
+            print("Враг оказался сильнее... \nВы програли!\n")
+
+            time.sleep(3)
