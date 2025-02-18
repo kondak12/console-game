@@ -21,7 +21,7 @@ def act_2_actions():
 
 
 
-    if act_2_choose == "1":   # стоять
+    if act_2_choose == "2":   # стоять
         rep_library.act_2_choose_stay()
 
         time.sleep(1.5)
@@ -84,7 +84,7 @@ def act_2_actions():
 
 
 
-    if act_2_choose == "2": # бежать
+    if act_2_choose == "1": # бежать
         rep_library.act_2_choose_run()
 
         time.sleep(1.5)

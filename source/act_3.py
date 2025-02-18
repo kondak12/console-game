@@ -5,6 +5,7 @@ from source import fight
 
 
 def act_3_actions():
+    functions.clear_console()
     print(input(rep_library.act_3_beginning))
 
     act_3_action_1_num = rep_library.act_3_action_1()
@@ -23,22 +24,32 @@ def act_3_actions():
         rep_library.act_3_action_1_choose_2(characters_stats.character_dmg()[0], characters_stats.character_dmg()[1])
 
 
-
+    functions.clear_console()
     act_3_action_2_choose = rep_library.act_3_action_2()
 
     if act_3_action_2_choose == "1":
 
+        functions.clear_console()
         rep_library.act_3_action_2_choose_1_phase_1(functions.characters_stats.character_name)
 
         fight.fighting(3)
 
         act_3_action_2_choose = rep_library.act_3_action_2_choose_1_phase_2()
 
-
         if act_3_action_2_choose == "1":
+            functions.clear_console()
+            rep_library.mid_ending(characters_stats.character_name)
+
+
+        if act_3_action_2_choose == "2":
+            functions.clear_console()
             rep_library.act_3_action_2_choose_1_phase_2_1()
 
             fight.fighting(4)
 
             if characters_stats.game_status == 0:
-                rep_library.bad_ending_1(characters_stats.character_name)
+                functions.clear_console()
+                rep_library.death_ending(characters_stats.character_name)
+
+            else:
+                pass

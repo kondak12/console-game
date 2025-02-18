@@ -22,7 +22,7 @@ def fighting(fight_mode_ex):
 
     if fight_mode_ex == 0:
 
-        print(rep_library.forest_page)
+        functions.typing_effect(rep_library.forest_page, 0.01)
 
 
         forest_fighter_1 = [30, [8, 12]]   # статы гаргульи: 0 - хп; 1 - диапазон урона
@@ -65,7 +65,7 @@ def fighting(fight_mode_ex):
 
     while int(characters_stats.character_health) > 0 and count_run != 3 and in_forest_fighter[0] > 0:
 
-        forest_action_choose = input(rep_library.fight_choose)
+        forest_action_choose = input(functions.typing_effect(rep_library.fight_choose, 0.01))
         forest_action_choose = forest_action_choose.lower()
 
         forest_action_choose_list = ["1", "2", "3", "справка"]
@@ -141,7 +141,10 @@ def fighting(fight_mode_ex):
                 dragon_phrase = random.choice([f"{rep_library.dragon_phrase_1(enemy_damage)}", f"{rep_library.dragon_phrase_2(enemy_damage)}",
                                                f"{rep_library.dragon_phrase_3(enemy_damage)}"])
 
-                print(f"{dragon_phrase}")
+                print()
+                functions.typing_effect(f"{dragon_phrase}", 0.01)
+                time.sleep(1)
+                print()
 
                 characters_stats.character_health -= enemy_damage
                 print("Здоровье персонажа ->", characters_stats.character_health, "\n")
@@ -155,7 +158,7 @@ def fighting(fight_mode_ex):
                     characters_stats.character_inventory.append("медвежевика")
                     characters_stats.character_inventory.append("медвежевика")
 
-                    time.sleep(4)
+                    time.sleep(3)
 
             time.sleep(1.5)
 

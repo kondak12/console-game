@@ -4,7 +4,7 @@ from source import functions
 
 
 def use_seller():
-    print(input(rep_library.seller_page))
+    input(functions.typing_effect(rep_library.seller_page))
 
     seller_items = [f"{rep_library.seller_medvejevika[0]}", f"{rep_library.seller_pechenierka[0]}", f"{rep_library.seller_sword[0]}",
                     f"{rep_library.seller_cell_of_body_2[0]}", "\nУ вас " f"{characters_stats.character_coins}" " монет(ы)."]

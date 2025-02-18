@@ -2,6 +2,8 @@ import sys
 import os
 import time
 import random
+from itertools import count
+
 from source import characters_stats
 from source import rep_library
 from source import fight
@@ -16,6 +18,7 @@ def name_char():
     while characters_stats.character_name.isdigit() or characters_stats.character_name == "":
         clear_console()
         characters_stats.character_name = input("Это точно имя? Попробуйте ещё раз >> ")
+
 
 
 def game_menu(act_number):
@@ -84,7 +87,7 @@ def load_game():
         characters_stats.character_sword = f"{save_game_file[6]}"
         characters_stats.character_cell_of_body = f"{save_game_file[7]}"
         characters_stats.character_coins = int(save_game_file[8])
-        characters_stats.character_inventory = save_game_file[9]
+        characters_stats.character_inventory = [save_game_file[9]]
         characters_stats.seller_triggers[0] = int(save_game_file[10])
         characters_stats.seller_triggers[1] = int(save_game_file[11])
         characters_stats.save_number = int(save_game_file[12])
@@ -133,13 +136,13 @@ def menu():
     clear_console()
     print(rep_library.art)
 
+    enter_list = ["1", "2", "3"]
     print("\n            1 <----- НОВАЯ ИГРА -----> 1\n"
           "           2 <------ ПРОДОЛЖИТЬ ------> 2\n"
           "            3 <------- ВЫХОД --------> 3\n")
 
     enter = input("Введите номер команды >> ")
     enter = str(enter)
-    enter_list = ["1", "2", "3"]
 
     while enter not in enter_list:
         enter = input("\nНеизвестная команда!\nВведите команду >> ")
@@ -171,11 +174,12 @@ def clear_console():
         os.system('clear')
 
 
-def typing_effect(text, delay=0.05):
+def typing_effect(text, delay=0.001):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
         time.sleep(delay)
+    return ""
 
 
 def autosave_question():
@@ -222,7 +226,7 @@ def go_home():
         clear_console()
         print("Пора бы отдохнуть... 'Вы заснули'.")
 
-        typing_effect("Z... Z... z...", 1)
+        typing_effect("Z... Z... z...", 0.3)
 
         characters_stats.character_health = characters_stats.character_default_health
         print("\nВы отдохнули. Здоровье восстановлено.")
@@ -236,7 +240,7 @@ def go_home():
         print("У вас", characters_stats.character_cell_of_body,
               "    Макс. здоровье ->", characters_stats.character_default_health, "\n")
 
-        input()
+        time.sleep(2.5)
 
 
     if choose_home == "3":
@@ -250,9 +254,8 @@ def go_home():
 
 def check_inventory():
     clear_console()
-    if characters_stats.character_inventory == [ ]:
+    if len(characters_stats.character_inventory) == 0:
         print("\nИнвентарь пуст.")
-
     else:
         print("Инвентарь:")
 
@@ -308,7 +311,7 @@ def use_inventory():
     clear_console()
     check_inventory()
 
-    if characters_stats.character_inventory != [ ]:
+    if len(characters_stats.character_inventory) == 0:
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
         inventory_choose = inventory_choose.lower()
 
@@ -427,7 +430,7 @@ def seller_choice(sell_item, item_name, phrase_before_sell, phrase_item):
 
     if characters_stats.character_coins >= sell_item:
         item_name = item_name.lower()
-        if item_name != rep_library.sword_1 and item_name != "ячейка крепкости 2":
+        if item_name != rep_library.sword_1 and item_name != f"{rep_library.cell_of_body_2}":
             characters_stats.character_inventory.append(item_name)
 
         characters_stats.character_coins -= sell_item
