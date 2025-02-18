@@ -68,7 +68,7 @@ def fighting(fight_mode_ex):
         forest_action_choose = input(rep_library.fight_choose)
         forest_action_choose = forest_action_choose.lower()
 
-        forest_action_choose_list = ["бег", "инвентарь", "инв", "удар", "уд", "справка"]
+        forest_action_choose_list = ["1", "2", "3", "справка"]
 
         while forest_action_choose not in forest_action_choose_list:
             forest_action_choose = input("Сейчас не время тормозить!\n" + rep_library.fight_choose)
@@ -80,12 +80,12 @@ def fighting(fight_mode_ex):
             continue
 
 
-        if forest_action_choose == "инвентарь" or forest_action_choose == "инв":
+        if forest_action_choose == "2":
             functions.use_inventory()
             continue
 
 
-        if forest_action_choose == "удар" or forest_action_choose == "уд":
+        if forest_action_choose == "1":
             forest_character_damage = random.randint(characters_stats.character_dmg()[0], characters_stats.character_dmg()[1])
 
             in_forest_fighter[0] -= forest_character_damage
@@ -98,30 +98,30 @@ def fighting(fight_mode_ex):
             time.sleep(1.5)
 
 
-        if fight_mode_ex == 1 and forest_action_choose == "бег" and count_run != 3:
+        if fight_mode_ex == 1 and forest_action_choose == "3" and count_run != 3:
                 count_run += 1
                 if count_run != 3:
                     print("Нужно пробовать убежать от него.\n"
                         "Нужно бежать ещё", 3 - count_run, "раз!\n")
 
-                    time.sleep(1.5)
+                    time.sleep(3)
 
 
 
-        if fight_mode_ex == 2 and forest_action_choose == "бег" and count_run != 3:
+        if fight_mode_ex == 2 and forest_action_choose == "3" and count_run != 3:
             count_run += 1.5
             if count_run != 3:
                 print("Нужно пробовать убежать от него.\n"
                       "Нужно бежать ещё 1 раз!\n")
 
-                time.sleep(1.5)
+                time.sleep(3)
 
 
-        if (fight_mode_ex == 3 or fight_mode_ex == 4) and forest_action_choose == "бег":   # бой с Драконом
+        if (fight_mode_ex == 3 or fight_mode_ex == 4) and forest_action_choose == "3":   # бой с Драконом
             print("Выход завалило обломками!\n"
                   "Бежать бесполезно...\n")
 
-            time.sleep(1.5)
+            time.sleep(3)
 
 
 
@@ -155,12 +155,12 @@ def fighting(fight_mode_ex):
                     characters_stats.character_inventory.append("медвежевика")
                     characters_stats.character_inventory.append("медвежевика")
 
-                    time.sleep(1.5)
+                    time.sleep(4)
 
             time.sleep(1.5)
 
 
-        if forest_action_choose == "бег" and fight_mode_ex == 0 and count_run != 3:
+        if forest_action_choose == "3" and fight_mode_ex == 0 and count_run != 3:
             count_run += 3
             print(rep_library.rep_run)
             characters_stats.character_default_lvl -= 0.3
@@ -212,7 +212,7 @@ def fighting(fight_mode_ex):
         if in_forest_fighter[0] < 1:
             characters_stats.character_default_health = 150
             characters_stats.character_health = 150
-            characters_stats.character_cell_of_body = "Ячейка крепкости тела 3"
+            characters_stats.character_cell_of_body = rep_library.cell_of_body_3
             rep_library.rep_forest_fight_end_eye()
             characters_stats.character_default_lvl += 3
 

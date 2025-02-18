@@ -6,9 +6,9 @@ save_number = 1
 
 character_name = None
 
+character_cell_of_body = f"{rep_library.cell_of_body_1}"
 character_default_health = 100
 character_health = 100
-character_cell_of_body = "Ячейка крепкости тела 1"
 
 character_default_lvl = 1
 character_lvl = int(character_default_lvl // 2)

@@ -15,13 +15,13 @@ def act_2_actions():
     act_2_choose = input()
     act_2_choose = act_2_choose.lower()
 
-    while act_2_choose != "стоять" and act_2_choose != "бежать":
+    while act_2_choose != "1" and act_2_choose != "2":
         act_2_choose = input("Ну же " + characters_stats.character_name + ", думай! -> ")
         act_2_choose = act_2_choose.lower()
 
 
 
-    if act_2_choose == "стоять":   # стоять
+    if act_2_choose == "1":   # стоять
         rep_library.act_2_choose_stay()
 
         time.sleep(1.5)
@@ -84,7 +84,7 @@ def act_2_actions():
 
 
 
-    if act_2_choose == "бежать":
+    if act_2_choose == "2": # бежать
         rep_library.act_2_choose_run()
 
         time.sleep(1.5)

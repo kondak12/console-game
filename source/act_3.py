@@ -18,7 +18,7 @@ def act_3_actions():
 
     if act_3_action_1_num == "2":
 
-        characters_stats.character_sword = "Платиновый меч"
+        characters_stats.character_sword = rep_library.sword_3
         characters_stats.character_default_damage = [16, 20]
         rep_library.act_3_action_1_choose_2(characters_stats.character_dmg()[0], characters_stats.character_dmg()[1])
 
