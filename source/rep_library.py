@@ -353,7 +353,7 @@ def dragon_phrase_3(dmg):
     r = "Дракон смахнул вас крылом в обломки крыши. Он нанёс " + f"{dmg}" + " урона."
     return f"{r}"
 
-def act_3_action_2_choose_1_phase_2():
+def act_3_action_2_choose_1_phase_2_1():
     input(typing_effect("'МммММ-МЕЛОЧчЧЧ-ЧЬ!'"))
     input(typing_effect("'Арр-ргх...'"))
     input(typing_effect("'Подобные тебе вв-воины, что сс-смогли одолеть меня нужж-жны мне.'"))
@@ -366,7 +366,7 @@ def act_3_action_2_choose_1_phase_2():
 
     return choose
 
-def act_3_action_2_choose_1_phase_2_1():
+def act_3_action_2_choose_1_phase_2_2():
     input(typing_effect("'ГР-РР-РЯЗЗ-ЗЬ!'"))
     input(typing_effect("'Я ПРр-РИКОНЧУ ТЕБЯ!'"))
     input(typing_effect("Дракон поменял свой оттенок и стал чёрного цвета.."))
@@ -374,6 +374,29 @@ def act_3_action_2_choose_1_phase_2_1():
     input(typing_effect("'НАПАДАЙ МЕЛОЧЧ-ЧЬ'"))
 
 
+def win_dragon():
+    input(typing_effect("'АРГХ-ХХхх...'", 0.05))
+    input(typing_effect("'ТЫыы...'", 0.07))
+    input(typing_effect("Мелоч-чь..", 0.07))
+    input(typing_effect("'победил..'", 0.07))
+    input(typing_effect("'не смей дажж-же думать о моей с-ссмерти...'", 0.07))
+    input(typing_effect("Окрававленный дракон встал на задние лапы."))
+    input(typing_effect("Взмахнул крыльями!"))
+    input(typing_effect("И полетел!"))
+    input(typing_effect(".....", 0.08))
+    input(typing_effect("Но упал вниз, крича:"))
+    input(typing_effect("'ЖЖ-ЖИВИ СВОЮ Ж-ЖАЛКУЮ ЖИЗНЬ!'", 0.07))
+    input(typing_effect("'ЦЦ-ЦЕПЛЯЯСЬ ЗА КАЖЖ-ЖДУЮ ПЕСЧ-ЧЧИНКУ!'", 0.07))
+    input(typing_effect(".....", 0.08))
+    input(typing_effect("Дракон умер, потому что не смог взететь."))
+    input(typing_effect("Вы победили!", 0.07))
+    input(typing_effect(".....", 0.07))
+    input(typing_effect("После этого дня, всё королевство знало ваше имя."))
+    input(typing_effect("А вы с принцессой стали парой на всю оставшуюся жизнь."))
+    input(typing_effect("Эту историю вы ещё долго рассказывали своим детям."))
+    input(typing_effect("Потом внукам."))
+    input(typing_effect("Так и прожив счастливую жинь."))
+    input(typing_effect("Конец!", 0.08))
 
 def mid_ending(name):
     input(typing_effect("'Не уж-жж то действительно ты пришёл сюда з-за этим?'"))

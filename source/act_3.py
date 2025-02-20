@@ -34,7 +34,7 @@ def act_3_actions():
 
         fight.fighting(3)
 
-        act_3_action_2_choose = rep_library.act_3_action_2_choose_1_phase_2()
+        act_3_action_2_choose = rep_library.act_3_action_2_choose_1_phase_2_1()
 
         if act_3_action_2_choose == "1":
             functions.clear_console()
@@ -43,13 +43,21 @@ def act_3_actions():
 
         if act_3_action_2_choose == "2":
             functions.clear_console()
-            rep_library.act_3_action_2_choose_1_phase_2_1()
+            rep_library.act_3_action_2_choose_1_phase_2_2()
 
             fight.fighting(4)
 
             if characters_stats.game_status == 0:
                 functions.clear_console()
                 rep_library.death_ending(characters_stats.character_name)
+                characters_stats.game_status = 2
 
             else:
-                pass
+                rep_library.win_dragon()
+                characters_stats.game_status = 2
+
+    if act_3_action_2_choose == "2":
+        rep_library.mid_ending(characters_stats.character_name)
+        characters_stats.game_status = 2
+
+    functions.menu()

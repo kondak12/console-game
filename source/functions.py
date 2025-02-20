@@ -276,7 +276,7 @@ def go_home():
 
 def check_inventory():
     clear_console()
-    if characters_stats.character_inventory == [ ] or characters_stats.character_inventory == []:
+    if characters_stats.character_inventory == [ ] or characters_stats.character_inventory == [] or characters_stats.character_inventory == ['']:
         print("\nИнвентарь пуст.")
     else:
         print("Инвентарь:")
@@ -333,7 +333,7 @@ def use_inventory():
     clear_console()
     check_inventory()
 
-    if characters_stats.character_inventory != [ ] and characters_stats.character_inventory != []:
+    if characters_stats.character_inventory != [ ] and characters_stats.character_inventory != [] and characters_stats.character_inventory != ['']:
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
         inventory_choose = inventory_choose.lower()
 
