@@ -10,7 +10,7 @@ character_cell_of_body = f"{rep_library.cell_of_body_1}"
 character_default_health = 100
 character_health = 100
 
-character_default_lvl = 10
+character_default_lvl = 1
 character_lvl = int(character_default_lvl // 2)
 
 character_sword = f"{rep_library.sword_1}"

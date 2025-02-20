@@ -2,7 +2,7 @@ import time
 import sys
 
 
-def typing_effect(text, delay=0.05):
+def typing_effect(text, delay=0.001):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()

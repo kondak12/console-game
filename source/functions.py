@@ -2,8 +2,6 @@ import sys
 import os
 import time
 import random
-from itertools import count
-
 from source import characters_stats
 from source import rep_library
 from source import fight
@@ -62,9 +60,14 @@ def save_game():
                              f"{characters_stats.character_dmg()[1]}" + "\n" +
                              f"{characters_stats.character_sword}" + "\n" +
                              f"{characters_stats.character_cell_of_body}" + "\n" +
-                             f"{characters_stats.character_coins}" + "\n" +
-                             f"{characters_stats.character_inventory}" + "\n" +
-                             f"{characters_stats.seller_triggers[0]}" + "\n" +
+                             f"{characters_stats.character_coins}" + "\n")
+
+        for i in characters_stats.character_inventory:
+            save_game_file.write(f"{i}")
+            if f"{i}" != f"{characters_stats.character_inventory[-1]}":
+                save_game_file.write(",")
+
+        save_game_file.write("\n" + f"{characters_stats.seller_triggers[0]}" + "\n" +
                              f"{characters_stats.seller_triggers[1]}" + "\n" +
                              f"{characters_stats.save_number}")
 
@@ -87,17 +90,17 @@ def load_game():
         characters_stats.character_sword = f"{save_game_file[6]}"
         characters_stats.character_cell_of_body = f"{save_game_file[7]}"
         characters_stats.character_coins = int(save_game_file[8])
-        characters_stats.character_inventory = [save_game_file[9]]
+        characters_stats.character_inventory = save_game_file[9].split(",")
         characters_stats.seller_triggers[0] = int(save_game_file[10])
         characters_stats.seller_triggers[1] = int(save_game_file[11])
         characters_stats.save_number = int(save_game_file[12])
 
     if characters_stats.save_number == 1:
-        print("Вы остановились в 1 акте игры.")
+        print("Вы остановились в 1 акте игры.\n")
     elif characters_stats.save_number == 2:
-        print("Вы остановились во 2 акте игры.")
+        print("Вы остановились во 2 акте игры.\n")
     elif characters_stats.save_number == 3:
-        print("Вы остановились в 3 акте игры.")
+        print("Вы остановились в 3 акте игры.\n")
     print()
 
 
@@ -136,10 +139,15 @@ def menu():
     clear_console()
     print(rep_library.art)
 
-    enter_list = ["1", "2", "3"]
-    print("\n            1 <----- НОВАЯ ИГРА -----> 1\n"
-          "           2 <------ ПРОДОЛЖИТЬ ------> 2\n"
-          "            3 <------- ВЫХОД --------> 3\n")
+    enter_list = ["1", "3"]
+    print("\n            1 <----- НОВАЯ ИГРА -----> 1\n")
+
+    with open("source/save_game.txt", "r") as source:
+        if source.read() != "":
+            enter_list.append("2")
+            print("          2 <------- ПРОДОЛЖИТЬ -------> 2\n")
+
+    print("            3 <------- ВЫХОД --------> 3\n")
 
     enter = input("Введите номер команды >> ")
     enter = str(enter)
@@ -152,12 +160,26 @@ def menu():
     if enter == "1":
         name_char()
         beginning_actions()
+        characters_stats.character_cell_of_body = f"{rep_library.cell_of_body_1}"
+        characters_stats.character_default_health = 100
+        characters_stats.character_health = 100
+        characters_stats.character_default_lvl = 1
+        characters_stats.save_number = 1
+        characters_stats.character_sword = f"{rep_library.sword_1}"
+        characters_stats.character_default_damage = [8, 12]
+        characters_stats.character_coins = 100
+        characters_stats.seller_triggers = [1, 1]
+        characters_stats.character_inventory = []
+
         enter = 1
 
-
     if enter == "2":
-        load_game()
-        acts_playing()
+        with open("source/save_game.txt", "r") as source:
+            if source.read() != "":
+                load_game()
+                acts_playing()
+            else:
+                print()
 
 
     if enter == "3":
@@ -254,7 +276,7 @@ def go_home():
 
 def check_inventory():
     clear_console()
-    if len(characters_stats.character_inventory) == 0:
+    if characters_stats.character_inventory == [ ] or characters_stats.character_inventory == []:
         print("\nИнвентарь пуст.")
     else:
         print("Инвентарь:")
@@ -311,7 +333,7 @@ def use_inventory():
     clear_console()
     check_inventory()
 
-    if len(characters_stats.character_inventory) == 0:
+    if characters_stats.character_inventory != [ ] and characters_stats.character_inventory != []:
         inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
         inventory_choose = inventory_choose.lower()
 
@@ -352,7 +374,7 @@ def act_1():
         else:
             print("1 Дом / 2 Лес / 3 Торговец / Тропа // 4 Меню")
 
-        choose = input()
+        choose = input("Куда отправимся? -> ")
         choose = choose.lower()
 
         choose_list = ["1", "2", "3", "4", "инвентарь", "инв", "справка"]
