@@ -36,11 +36,11 @@ def fighting(fight_mode_ex):
         in_forest_fighter = forest_fighter
 
 
-        functions.choose_fighter_rep(forest_fighter, forest_fighter_1, rep_library.reps[0], "Здоровье существа -> 30\n")
+        functions.choose_fighter_rep(forest_fighter, forest_fighter_1, rep_library.reps[0], "\033[31mЗдоровье существа -> 30\033[0m\n")
 
-        functions.choose_fighter_rep(forest_fighter, forest_fighter_2, rep_library.reps[1], "Здоровье существа -> 20\n")
+        functions.choose_fighter_rep(forest_fighter, forest_fighter_2, rep_library.reps[1], "\033[31mЗдоровье существа -> 20\033[0m\n")
 
-        functions.choose_fighter_rep(forest_fighter, forest_fighter_3, rep_library.reps[2], "Здоровье существа -> 10\n")
+        functions.choose_fighter_rep(forest_fighter, forest_fighter_3, rep_library.reps[2], "\033[31mЗдоровье существа -> 10\033[0m\n")
 
 
         time.sleep(1.5)
@@ -93,7 +93,7 @@ def fighting(fight_mode_ex):
             if in_forest_fighter[0] < 0:
                 in_forest_fighter[0] = 0
 
-            print("Вы нанесли", forest_character_damage, "урона врагу...  Здоровье врага ->", in_forest_fighter[0])
+            print("\033[32mВы нанесли", forest_character_damage, "урона врагу...  Здоровье врага ->", in_forest_fighter[0], "\033[0m")
 
             time.sleep(1.5)
 
@@ -102,7 +102,7 @@ def fighting(fight_mode_ex):
                 count_run += 1
                 if count_run != 3:
                     print("Нужно пробовать убежать от него.\n"
-                        "Нужно бежать ещё", 3 - count_run, "раз!\n")
+                        "\033[33mНужно бежать ещё", 3 - count_run, "раз!\n\033[0m")
 
                     time.sleep(3)
 
@@ -112,14 +112,14 @@ def fighting(fight_mode_ex):
             count_run += 1.5
             if count_run != 3:
                 print("Нужно пробовать убежать от него.\n"
-                      "Нужно бежать ещё 1 раз!\n")
+                      "\033[33mНужно бежать ещё 1 раз!\n\033[0m")
 
                 time.sleep(3)
 
 
         if (fight_mode_ex == 3 or fight_mode_ex == 4) and forest_action_choose == "3":   # бой с Драконом
-            print("Выход завалило обломками!\n"
-                  "Бежать бесполезно...\n")
+            print("\033[31mВыход завалило обломками!\n"
+                  "Бежать бесполезно...\n\033[0m")
 
             time.sleep(3)
 
@@ -130,11 +130,11 @@ def fighting(fight_mode_ex):
 
 
             if fight_mode_ex != 3 and fight_mode_ex != 4:
-                print("Враг ударил вас. Он нанёс", enemy_damage,"урона.\n")
+                print("\033[0mВраг ударил вас. Он нанёс", enemy_damage,"урона.\n\033[0m")
 
                 characters_stats.character_health -= enemy_damage
 
-                print("Здоровье персонажа  ->", characters_stats.character_health, "\n")
+                print("\033[33mЗдоровье персонажа  ->", characters_stats.character_health, "\n\033[0m")
 
 
             if fight_mode_ex == 3 or fight_mode_ex == 4:   # бой с Драконом
@@ -147,7 +147,7 @@ def fighting(fight_mode_ex):
                 print()
 
                 characters_stats.character_health -= enemy_damage
-                print("Здоровье персонажа ->", characters_stats.character_health, "\n")
+                print("\033[32mЗдоровье персонажа ->", characters_stats.character_health, "\n\033[0m")
 
                 if princess_help != 1 and characters_stats.character_health < 30:
                     princess_help += 1
@@ -238,21 +238,21 @@ def fighting(fight_mode_ex):
 
     if count_run == 3 and fight_mode_ex == 1:
         characters_stats.character_default_lvl -= 0.6
-        print("lvl: - 0,6\n")
+        print("\033[31mlvl: - 0,6\n\033[0m")
 
         time.sleep(1.5)
 
 
     if count_run == 3 and fight_mode_ex == 2:
         characters_stats.character_default_lvl -= 0.4
-        print("lvl: - 0,4\n")
+        print("\033[31mlvl: - 0,4\n\033[0m")
 
         time.sleep(1.5)
 
 
     if characters_stats.character_health > 0:
-        print("Здоровье персонажа  -> ", characters_stats.character_health)
-        print("lvl  -> ", characters_stats.character_default_lvl,"\n")
+        print("\033[32mЗдоровье персонажа  -> ", characters_stats.character_health, "\033[0m")
+        print("\033[32mlvl  -> ", characters_stats.character_default_lvl,"\n\033[0m")
 
         time.sleep(1.5)
 
@@ -261,6 +261,6 @@ def fighting(fight_mode_ex):
         characters_stats.game_status = 0
 
         if fight_mode_ex != 4:
-            print("Враг оказался сильнее... \nВы програли!\n")
+            print("\033[31mВраг оказался сильнее... \nВы програли!\n\033[0m")
 
             time.sleep(3)

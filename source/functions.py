@@ -11,9 +11,9 @@ from source import act_3
 
 
 def name_char():
-    characters_stats.character_name = input("Введите имя персонажа >> ")
+    characters_stats.character_name = input("\033[32mВведите имя персонажа >> \033[0m")
 
-    while characters_stats.character_name.isdigit() or characters_stats.character_name == "":
+    while characters_stats.character_name.isdigit() or characters_stats.character_name == "" or len(characters_stats.character_name) > 15:
         clear_console()
         characters_stats.character_name = input("Это точно имя? Попробуйте ещё раз >> ")
 
@@ -21,9 +21,9 @@ def name_char():
 
 def game_menu(act_number):
     print("\n1 *----- ПРОДОЛЖИТЬ -----> 1\n"
-          "2 *--- СОХРАНИТЬ ИГРУ ---> 2\n"
+          "\033[32m2 *--- СОХРАНИТЬ ИГРУ ---> 2\033[0m\n"
           "3 *---- ГЛАВНОЕ МЕНЮ ----> 3\n"
-          "4 *------- ВЫЙТИ --------> 4\n")
+          "\033[31m4 *------- ВЫЙТИ --------> 4\033[0m\n")
 
     game_menu_choose = input("Введите номер команды -> ")
     game_menu_choose = str(game_menu_choose)
@@ -38,7 +38,7 @@ def game_menu(act_number):
     if game_menu_choose == "2":
         save_game()
 
-        print("\nИгра сохранена!")
+        print("\n\033[32mИгра сохранена!\033[0m")
 
 
     if game_menu_choose == "3":
@@ -96,11 +96,11 @@ def load_game():
         characters_stats.save_number = int(save_game_file[12])
 
     if characters_stats.save_number == 1:
-        print("Вы остановились в 1 акте игры.\n")
+        print("\033[35mВы остановились в 1 акте игры.\033[0m\n")
     elif characters_stats.save_number == 2:
-        print("Вы остановились во 2 акте игры.\n")
+        print("\033[35mВы остановились во 2 акте игры.\033[0m\n")
     elif characters_stats.save_number == 3:
-        print("Вы остановились в 3 акте игры.\n")
+        print("\033[35mВы остановились в 3 акте игры.\033[0m\n")
     print()
 
 
@@ -140,14 +140,14 @@ def menu():
     print(rep_library.art)
 
     enter_list = ["1", "3"]
-    print("\n            1 <----- НОВАЯ ИГРА -----> 1\n")
+    print("\n            \033[32m1 <----- НОВАЯ ИГРА -----> 1\033[0m\n")
 
     with open("source/save_game.txt", "r") as source:
         if source.read() != "":
             enter_list.append("2")
-            print("          2 <------- ПРОДОЛЖИТЬ -------> 2\n")
+            print("          \033[35m2 <------- ПРОДОЛЖИТЬ -------> 2\033[0m\n")
 
-    print("            3 <------- ВЫХОД --------> 3\n")
+    print("            \033[31m3 <------- ВЫХОД --------> 3\033[0m\n")
 
     enter = input("Введите номер команды >> ")
     enter = str(enter)
@@ -206,10 +206,10 @@ def typing_effect(text, delay=0.001):
 
 def autosave_question():
     clear_console()
-    save_trigger = input("\nХотите сохранить текущий прогресс?\nДа / Нет\nВыбор >> ")
+    save_trigger = input("\n\033[33mХотите сохранить текущий прогресс?\033[0m\nДа / Нет\nВыбор >> ")
 
     while save_trigger.lower() != "нет" and save_trigger.lower() != "да":
-        save_trigger = input("\nХотите сохранить текущий прогресс?\nДа / Нет\nВыбор >> ")
+        save_trigger = input("\n\033[33mХотите сохранить текущий прогресс?\033[0m\nДа / Нет\nВыбор >> ")
         save_trigger = save_trigger.lower()
 
     if save_trigger == "да":
@@ -248,10 +248,10 @@ def go_home():
         clear_console()
         print("Пора бы отдохнуть... 'Вы заснули'.")
 
-        typing_effect("Z... Z... z...", 0.3)
+        typing_effect("\033[32mZ... Z... z...\033[0m", 0.3)
 
         characters_stats.character_health = characters_stats.character_default_health
-        print("\nВы отдохнули. Здоровье восстановлено.")
+        print("\nВы отдохнули. \033[32mЗдоровье восстановлено.\033[0m")
 
 
     if choose_home == "2":
@@ -267,7 +267,7 @@ def go_home():
 
     if choose_home == "3":
         clear_console()
-        print("Ещё увидимся, дом. Жди меня!\n")
+        print("\033[33mЕщё увидимся, дом. Жди меня!\033[0m\n")
 
     time.sleep(1.5)
     clear_console()
@@ -277,9 +277,9 @@ def go_home():
 def check_inventory():
     clear_console()
     if characters_stats.character_inventory == [ ] or characters_stats.character_inventory == [] or characters_stats.character_inventory == ['']:
-        print("\nИнвентарь пуст.")
+        print("\n\033[33mИнвентарь пуст.\033[0m")
     else:
-        print("Инвентарь:")
+        print("\033[33mИнвентарь:\033[0m")
 
         count = -1
 
@@ -306,7 +306,7 @@ def use_medvejevika():
     characters_stats.character_inventory.remove("медвежевика")
     characters_stats.character_health += 15
 
-    print(input("Вы съели ягоду. +15 Здоровья"))
+    print(input("Вы съели ягоду. \033[32m+15 Здоровья\033[0m"))
 
     if characters_stats.character_health > characters_stats.character_default_health:
         characters_stats.character_health = characters_stats.character_default_health
@@ -320,7 +320,7 @@ def use_pechenierka():
     characters_stats.character_inventory.remove("печеньерка")
     characters_stats.character_health += 30
 
-    print(input("Вы съели печеньерку. +30 Здоровья"))
+    print(input("Вы съели печеньерку. \033[32m+30 Здоровья\033[0m"))
 
     if characters_stats.character_health > characters_stats.character_default_health:
         characters_stats.character_health = characters_stats.character_default_health
@@ -334,7 +334,7 @@ def use_inventory():
     check_inventory()
 
     if characters_stats.character_inventory != [ ] and characters_stats.character_inventory != [] and characters_stats.character_inventory != ['']:
-        inventory_choose = input("Введите 'закрыть' чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
+        inventory_choose = input("Введите \033[33m'закрыть'\033[0m чтобы закрыть инвентарь.\nВведите название предмета для использования -> ")
         inventory_choose = inventory_choose.lower()
 
         character_inventory_list = ["медвежевика", "мед", "печеньерка", "печ", "закрыть", "справка"]
@@ -370,9 +370,9 @@ def act_1():
         print("Выберите локацию, куда отправитесь: ")
 
         if int(characters_stats.character_default_lvl) < 3:
-            print("1 Дом / 2 Лес / 3 Торговец // 4 Меню")
+            print("\033[35m1 Дом\033[0m / \033[32m2 Лес\033[0m / \033[33m3 Торговец\033[0m // \033[31m4 Меню\033[0m")
         else:
-            print("1 Дом / 2 Лес / 3 Торговец / Тропа // 4 Меню")
+            print("\033[35m1 Дом\033[0m / \033[32m2 Лес\033[0m / \033[33m3 Торговец\033[0m / \033[36mТропа\033[0m // \033[31m4 Меню\033[0m")
 
         choose = input("Куда отправимся? -> ")
         choose = choose.lower()
@@ -459,7 +459,7 @@ def seller_choice(sell_item, item_name, phrase_before_sell, phrase_item):
 
         time.sleep(1.5)
 
-        print("Теперь забирай.\n")
+        print("\033[32mТеперь забирай.\033[0m\n")
 
         time.sleep(1.5)
 
