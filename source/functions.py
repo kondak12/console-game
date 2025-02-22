@@ -452,7 +452,7 @@ def seller_choice(sell_item, item_name, phrase_before_sell, phrase_item):
 
     if characters_stats.character_coins >= sell_item:
         item_name = item_name.lower()
-        if item_name != rep_library.sword_1 and item_name != f"{rep_library.cell_of_body_2}":
+        if item_name != rep_library.sword_2 and item_name != rep_library.cell_of_body_2:
             characters_stats.character_inventory.append(item_name)
 
         characters_stats.character_coins -= sell_item
