@@ -64,8 +64,7 @@ def save_game():
 
         for i in characters_stats.character_inventory:
             save_game_file.write(f"{i}")
-            if f"{i}" != f"{characters_stats.character_inventory[-1]}":
-                save_game_file.write(",")
+            save_game_file.write(",")
 
         save_game_file.write("\n" + f"{characters_stats.seller_triggers[0]}" + "\n" +
                              f"{characters_stats.seller_triggers[1]}" + "\n" +
@@ -196,7 +195,7 @@ def clear_console():
         os.system('clear')
 
 
-def typing_effect(text, delay=0.001):
+def typing_effect(text, delay=0.05):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()

@@ -121,7 +121,7 @@ def fighting(fight_mode_ex):
             print("\033[31mВыход завалило обломками!\n"
                   "Бежать бесполезно...\n\033[0m")
 
-            time.sleep(3)
+            time.sleep(2)
 
 
 
@@ -260,7 +260,9 @@ def fighting(fight_mode_ex):
     if characters_stats.character_health < 1:
         characters_stats.game_status = 0
 
-        if fight_mode_ex != 4:
+        if fight_mode_ex != 4 and fight_mode_ex != 3:
             print("\033[31mВраг оказался сильнее... \nВы програли!\n\033[0m")
 
             time.sleep(3)
+
+            functions.base_game()

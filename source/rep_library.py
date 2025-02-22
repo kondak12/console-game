@@ -2,7 +2,7 @@ import time
 import sys
 
 
-def typing_effect(text, delay=0.001):
+def typing_effect(text, delay=0.05):
     for char in text:
         sys.stdout.write(char)
         sys.stdout.flush()
@@ -59,7 +59,7 @@ def act_2_choose_run():
     input(typing_effect("\033[31mЯ НЕ ТРУС\033[0m"))
     input(typing_effect("В момент перед вами оказался глаз, огромный глаз!"))
     input(typing_effect("Вы упили на землю от вида невиданного ранее создания..."))
-    input(typing_effect("'Человек! \033[36mИспугался?\033[36m Куда так рванул от меня?'"))
+    input(typing_effect("'Человек! \033[36mИспугался?\0330m Куда так рванул от меня?'"))
     print("Выберите номер ответа:\n"
           "1. \033[34mОставь меня, глаз!\033[0m\n"
           "2. \033[31mКакое тебе дело? Хочешь сразиться?!\033[0m\n")
