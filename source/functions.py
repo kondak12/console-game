@@ -166,7 +166,7 @@ def menu():
         characters_stats.save_number = 1
         characters_stats.character_sword = f"{rep_library.sword_1}"
         characters_stats.character_default_damage = [8, 12]
-        characters_stats.character_coins = 100
+        characters_stats.character_coins = 3
         characters_stats.seller_triggers = [1, 1]
         characters_stats.character_inventory = []
 
