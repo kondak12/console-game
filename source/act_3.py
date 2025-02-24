@@ -45,7 +45,7 @@ def act_3_actions():
                 functions.clear_console()
                 rep_library.mid_ending(characters_stats.character_name)
 
-            elif act_3_action_2_choose == "2":
+            elif act_3_action_2_choose_mid == "2":
                 functions.clear_console()
                 rep_library.act_3_action_2_choose_1_phase_2_2()
 

@@ -1,5 +1,6 @@
 import sys
 import os
+import msvcrt
 import time
 import random
 from source import characters_stats
@@ -108,11 +109,9 @@ def reference():
     print(rep_library.call_reference)
 
     ref_enter = input("Введите номер пункта >> ")
-    ref_enter = str(ref_enter)
 
     while ref_enter not in rep_library.reference_list:
         ref_enter = input("Неизвестный пункт. Повторите попытку >> ")
-        ref_enter = str(ref_enter)
 
     if ref_enter == "1":
         print(input(rep_library.call_reference_suj))
@@ -136,7 +135,7 @@ def reference():
 
 def menu():
     clear_console()
-    print(rep_library.art)
+    typing_effect(rep_library.art, 0.01)
 
     enter_list = ["1", "3"]
     print("\n            \033[32m1 <----- НОВАЯ ИГРА -----> 1\033[0m\n")
@@ -149,11 +148,9 @@ def menu():
     print("            \033[31m3 <------- ВЫХОД --------> 3\033[0m\n")
 
     enter = input("Введите номер команды >> ")
-    enter = str(enter)
 
     while enter not in enter_list:
         enter = input("\nНеизвестная команда!\nВведите команду >> ")
-        enter = str(enter)
 
 
     if enter == "1":
@@ -195,23 +192,27 @@ def clear_console():
         os.system('clear')
 
 
-def typing_effect(text, delay=0.05):
+
+def typing_effect(text, delay=0.03):
     for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
+        if msvcrt.kbhit():
+            key = msvcrt.getch()
+            if key == b"r":
+                break
+        print(char, end = "",flush=True)
         time.sleep(delay)
     return ""
 
 
+
 def autosave_question():
     clear_console()
-    save_trigger = input("\n\033[33mХотите сохранить текущий прогресс?\033[0m\nДа / Нет\nВыбор >> ")
+    save_trigger = input("\n\033[33mХотите сохранить текущий прогресс?\033[0m\n1 Да / 2 Нет\nВыбор >> ")
 
-    while save_trigger.lower() != "нет" and save_trigger.lower() != "да":
-        save_trigger = input("\n\033[33mХотите сохранить текущий прогресс?\033[0m\nДа / Нет\nВыбор >> ")
-        save_trigger = save_trigger.lower()
+    while save_trigger not in ["1", "2"]:
+        save_trigger = input("\n\033[33mХотите сохранить текущий прогресс?\033[0m\n1 Да / 2 Нет\nВыбор >> ")
 
-    if save_trigger == "да":
+    if save_trigger == "1":
         save_game()
 
 
@@ -255,7 +256,7 @@ def go_home():
 
     if choose_home == "2":
         clear_console()
-        print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_dmg()[0] + characters_stats.character_lvl,
+        print("У вас", characters_stats.character_sword, "    Мин. урон ->", characters_stats.character_dmg()[0],
               " /  Макс. урон ->", characters_stats.character_dmg()[1])
 
         print("У вас", characters_stats.character_cell_of_body,
@@ -305,12 +306,14 @@ def use_medvejevika():
     characters_stats.character_inventory.remove("медвежевика")
     characters_stats.character_health += 15
 
-    print(input("Вы съели ягоду. \033[32m+15 Здоровья\033[0m"))
+    print("Вы съели ягоду. \033[32m+15 Здоровья\033[0m")
 
+    time.sleep(1.5)
     if characters_stats.character_health > characters_stats.character_default_health:
         characters_stats.character_health = characters_stats.character_default_health
 
-    print(input("Здоровье персонажа -> " + f"{characters_stats.character_health}"))
+    print("Здоровье персонажа -> " + f"{characters_stats.character_health}")
+    time.sleep(1.5)
 
 
 
@@ -319,12 +322,14 @@ def use_pechenierka():
     characters_stats.character_inventory.remove("печеньерка")
     characters_stats.character_health += 30
 
-    print(input("Вы съели печеньерку. \033[32m+30 Здоровья\033[0m"))
+    print("Вы съели печеньерку. \033[32m+30 Здоровья\033[0m")
+    time.sleep(1.5)
 
     if characters_stats.character_health > characters_stats.character_default_health:
         characters_stats.character_health = characters_stats.character_default_health
 
-    print(input("Здоровье персонажа -> " + f"{characters_stats.character_health}"))
+    print("Здоровье персонажа -> " + f"{characters_stats.character_health}")
+    time.sleep(1.5)
 
 
 

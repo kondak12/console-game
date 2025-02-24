@@ -23,3 +23,5 @@ character_coins = 3
 seller_triggers = [1, 1]
 
 character_inventory = []
+
+stop_output = False
